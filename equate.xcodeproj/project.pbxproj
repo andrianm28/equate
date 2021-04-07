@@ -90,6 +90,8 @@
 				6F682BF1261C6B2500CAC906 /* percentageCell.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		3981662F261DAA3400C12290 /* SuggestionPage */ = {
 			isa = PBXGroup;
 			children = (
