@@ -14,6 +14,9 @@
 		3912C3FC26147F6700A3C3AA /* equate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3912C3FA26147F6700A3C3AA /* equate.xcdatamodeld */; };
 		3912C3FE26147F6900A3C3AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3912C3FD26147F6900A3C3AA /* Assets.xcassets */; };
 		3912C40126147F6900A3C3AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3912C3FF26147F6900A3C3AA /* LaunchScreen.storyboard */; };
+		39816631261DAA5700C12290 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39816630261DAA5700C12290 /* SuggestionViewController.swift */; };
+		39816634261DAADA00C12290 /* Suggestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39816633261DAADA00C12290 /* Suggestion.storyboard */; };
+		3981663A261DAB2300C12290 /* EquateCoredata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39816638261DAB2300C12290 /* EquateCoredata.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		3912C3FD26147F6900A3C3AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3912C40026147F6900A3C3AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3912C40226147F6900A3C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39816630261DAA5700C12290 /* SuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
+		39816633261DAADA00C12290 /* Suggestion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Suggestion.storyboard; sourceTree = "<group>"; };
+		39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EquateCoredata.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,8 @@
 		3912C3F026147F6700A3C3AA /* equate */ = {
 			isa = PBXGroup;
 			children = (
+				39816636261DAB0000C12290 /* Model */,
+				3981662F261DAA3400C12290 /* SuggestionPage */,
 				3912C3F126147F6700A3C3AA /* AppDelegate.swift */,
 				3912C3F326147F6700A3C3AA /* SceneDelegate.swift */,
 				3912C3F526147F6700A3C3AA /* ViewController.swift */,
@@ -68,6 +76,23 @@
 				3912C3FA26147F6700A3C3AA /* equate.xcdatamodeld */,
 			);
 			path = equate;
+			sourceTree = "<group>";
+		};
+		3981662F261DAA3400C12290 /* SuggestionPage */ = {
+			isa = PBXGroup;
+			children = (
+				39816630261DAA5700C12290 /* SuggestionViewController.swift */,
+				39816633261DAADA00C12290 /* Suggestion.storyboard */,
+			);
+			path = SuggestionPage;
+			sourceTree = "<group>";
+		};
+		39816636261DAB0000C12290 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39816638261DAB2300C12290 /* EquateCoredata.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39816634261DAADA00C12290 /* Suggestion.storyboard in Resources */,
 				3912C40126147F6900A3C3AA /* LaunchScreen.storyboard in Resources */,
 				3912C3FE26147F6900A3C3AA /* Assets.xcassets in Resources */,
 				3912C3F926147F6700A3C3AA /* Main.storyboard in Resources */,
@@ -143,7 +169,9 @@
 				3912C3FC26147F6700A3C3AA /* equate.xcdatamodeld in Sources */,
 				3912C3F626147F6700A3C3AA /* ViewController.swift in Sources */,
 				3912C3F226147F6700A3C3AA /* AppDelegate.swift in Sources */,
+				3981663A261DAB2300C12290 /* EquateCoredata.xcdatamodeld in Sources */,
 				3912C3F426147F6700A3C3AA /* SceneDelegate.swift in Sources */,
+				39816631261DAA5700C12290 /* SuggestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +382,16 @@
 			);
 			currentVersion = 3912C3FB26147F6700A3C3AA /* equate.xcdatamodel */;
 			path = equate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		39816638261DAB2300C12290 /* EquateCoredata.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */,
+			);
+			currentVersion = 39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */;
+			path = EquateCoredata.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
