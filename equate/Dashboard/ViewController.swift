@@ -7,8 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
-
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate{
+    
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var todayGoalView: UITableView!
     @IBOutlet weak var summaryCollection: UICollectionView!
     var dash_title = ["Productivity","Leisure Time","Social","Rest and Sleep"]
     var dash_percent = [80,50,30,75]
@@ -17,6 +20,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -72,6 +76,35 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell?.layer.addSublayer(shapeLayer)
         //assign cell title,percent, etc here
         return cell!
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 10
+    }
+    
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "todayCardIdentifier", for: indexPath) as! todayGoalCard
+        
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        cell.selectedBackgroundView?.layer.cornerRadius = 10
+        return cell
     }
     
     func hexStringToUIColor (hex:String) -> UIColor {
