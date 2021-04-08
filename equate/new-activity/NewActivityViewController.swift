@@ -18,13 +18,14 @@ class NewActivityViewController: UIViewController {
         super.viewDidLoad()
         let chevronArr = [goalNameButton, categoryButton, iconButton]
 //        let dayArr = ["Sun", "Mon", "Tue", "Wed","Thu","Fri","Sat"]
+//        set every chevron butt
         for i in chevronArr{
             setButton(butt: i!)
         }
-        // Do any additional setup after loading the view.
     }
     
     func setButton(butt: UIButton){
+//        setup chevron button (the '>' thingy)
         let chevron = UIImage(systemName: "chevron.forward")
         chevron?.withTintColor(UIColor.lightGray)
         butt.setImage(chevron, for: .normal)
@@ -35,25 +36,19 @@ class NewActivityViewController: UIViewController {
     @IBAction func tapSetGoal(_ sender: Any) {
 //        present(inputGoalController(), animated: true)
         let vc = storyboard?.instantiateViewController(identifier: "inputGoal") as! inputGoalController
+//      present new storyboard
         present(vc, animated: true)
     }
+//    dismiss storyboard
     @IBAction func backtoDash(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
+    
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//    INPUT GOAL NAME CONTROLLER
 }
 class inputGoalController: UIViewController {
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
