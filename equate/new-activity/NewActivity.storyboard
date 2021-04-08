@@ -140,6 +140,9 @@
                                 <state key="normal" title="S">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectDayRepeat:" destination="TJK-YG-cHO" eventType="touchUpInside" id="dZ7-hs-afY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9b1-Yq-RlV">
                                 <rect key="frame" x="67" y="311" width="45" height="36"/>
@@ -148,6 +151,9 @@
                                 <state key="normal" title="M">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectDayRepeat:" destination="TJK-YG-cHO" eventType="touchUpInside" id="K3q-Ph-riV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U65-Oc-bLt">
                                 <rect key="frame" x="120" y="311" width="45" height="36"/>
@@ -156,6 +162,9 @@
                                 <state key="normal" title="T">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectDayRepeat:" destination="TJK-YG-cHO" eventType="touchUpInside" id="TRI-72-wcV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFO-T2-YUZ">
                                 <rect key="frame" x="173" y="311" width="45" height="36"/>
@@ -164,6 +173,9 @@
                                 <state key="normal" title="W">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectDayRepeat:" destination="TJK-YG-cHO" eventType="touchUpInside" id="Dsn-gb-E3B"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpD-Da-k7g">
                                 <rect key="frame" x="226" y="311" width="45" height="36"/>
@@ -172,6 +184,9 @@
                                 <state key="normal" title="T">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectDayRepeat:" destination="TJK-YG-cHO" eventType="touchUpInside" id="xXs-XR-EI1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhA-Zo-5yh">
                                 <rect key="frame" x="279" y="311" width="45" height="36"/>
@@ -180,6 +195,9 @@
                                 <state key="normal" title="F">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectDayRepeat:" destination="TJK-YG-cHO" eventType="touchUpInside" id="2R6-np-Xak"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Th-6I-gCH">
                                 <rect key="frame" x="332" y="311" width="45" height="36"/>
@@ -188,6 +206,9 @@
                                 <state key="normal" title="S">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectDayRepeat:" destination="TJK-YG-cHO" eventType="touchUpInside" id="9oE-c4-v1v"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKH-2f-VHl">
                                 <rect key="frame" x="16" y="548" width="358" height="54"/>

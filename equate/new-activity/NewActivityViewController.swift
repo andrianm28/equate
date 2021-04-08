@@ -17,15 +17,17 @@ class NewActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(dayCollection[0].titleLabel!.text)
-//        print(dayCollection[1].titleLabel!.text)
-
         let chevronArr = [goalNameButton, categoryButton, iconButton]
 //        let dayArr = ["Sun", "Mon", "Tue", "Wed","Thu","Fri","Sat"]
 //        set every chevron butt
         for i in chevronArr{
             setButton(butt: i!)
         }
+    }
+    @IBAction func selectDayRepeat(_ sender: UIButton) {
+        if repSwitch.isOn{repSwitch.isOn = !repSwitch.isOn}
+        print(String(sender.titleLabel!.text!))
+        sender.isSelected = !sender.isSelected
     }
     @IBAction func checkRepeatEveryday(_ sender: Any) {
         for day in dayCollection{
