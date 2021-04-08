@@ -26,12 +26,12 @@ class todayGoalCard: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.cornerRadius = 5
-        self.contentView.layer.cornerRadius = 5
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowOffset = CGSize(width: 0.5, height: 1)
         self.layer.shadowOpacity = 0.5
+        
+        goalIcon.layer.cornerRadius = 10
     }
     
     override var frame: CGRect {
@@ -41,7 +41,7 @@ class todayGoalCard: UITableViewCell {
         set (newFrame) {
             var frame = newFrame
             frame.origin.x += 10
-            frame.size.width -= 4 * 10
+            frame.size.width -= 2 * 10
             super.frame = frame
         }
     }
