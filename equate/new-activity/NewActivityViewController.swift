@@ -37,6 +37,9 @@ class NewActivityViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(identifier: "inputGoal") as! inputGoalController
         present(vc, animated: true)
     }
+    @IBAction func backtoDash(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
@@ -50,8 +53,17 @@ class NewActivityViewController: UIViewController {
 }
 class inputGoalController: UIViewController {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    @IBAction func closethisshit(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func doneInput(_ sender: Any) {
+//        TODO SAVE INPUT
+        dismiss(animated: true, completion: nil)
+
     }
 }
 
