@@ -94,6 +94,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Z2U-aq-vmb">
                                 <rect key="frame" x="297" y="368" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="checkRepeatEveryday:" destination="TJK-YG-cHO" eventType="valueChanged" id="Pxe-D6-NvR"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set Notification For This Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azN-tN-tXw">
                                 <rect key="frame" x="32" y="649" width="221" height="18"/>
@@ -242,6 +245,13 @@
                         <outlet property="goalNameButton" destination="DbY-gJ-Wic" id="m6C-0E-acn"/>
                         <outlet property="iconButton" destination="P6h-Uf-ICC" id="2BO-iU-4Wg"/>
                         <outlet property="repSwitch" destination="Z2U-aq-vmb" id="uEk-U6-fAw"/>
+                        <outletCollection property="dayCollection" destination="erm-NM-bF5" collectionClass="NSMutableArray" id="nf1-06-Iqr"/>
+                        <outletCollection property="dayCollection" destination="9b1-Yq-RlV" collectionClass="NSMutableArray" id="dKU-vk-GOe"/>
+                        <outletCollection property="dayCollection" destination="U65-Oc-bLt" collectionClass="NSMutableArray" id="4sE-hi-1Rp"/>
+                        <outletCollection property="dayCollection" destination="cFO-T2-YUZ" collectionClass="NSMutableArray" id="ddL-oG-rK7"/>
+                        <outletCollection property="dayCollection" destination="LpD-Da-k7g" collectionClass="NSMutableArray" id="m3s-xa-nOf"/>
+                        <outletCollection property="dayCollection" destination="yhA-Zo-5yh" collectionClass="NSMutableArray" id="aCd-ro-jGQ"/>
+                        <outletCollection property="dayCollection" destination="6Th-6I-gCH" collectionClass="NSMutableArray" id="DDi-xZ-pSB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibu-NR-XK2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,15 +13,25 @@ class NewActivityViewController: UIViewController {
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var repSwitch: UISwitch!
+    @IBOutlet var dayCollection: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print(dayCollection[0].titleLabel!.text)
+//        print(dayCollection[1].titleLabel!.text)
+
         let chevronArr = [goalNameButton, categoryButton, iconButton]
 //        let dayArr = ["Sun", "Mon", "Tue", "Wed","Thu","Fri","Sat"]
 //        set every chevron butt
         for i in chevronArr{
             setButton(butt: i!)
         }
+    }
+    @IBAction func checkRepeatEveryday(_ sender: Any) {
+        for day in dayCollection{
+            day.isSelected = repSwitch.isOn
+        }
+        
     }
     
     func setButton(butt: UIButton){
@@ -49,6 +59,7 @@ class NewActivityViewController: UIViewController {
 //    INPUT GOAL NAME CONTROLLER
 }
 class inputGoalController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
