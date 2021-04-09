@@ -45,6 +45,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             let slide = UIView(frame: frame)
 
             //subviews
+            
+            //adding comment
             let imageView = UIImageView.init(image: UIImage.init(named: imgs[index]))
             imageView.frame = CGRect(x:0,y:0,width:430,height:400)
             imageView.contentMode = .scaleAspectFill
