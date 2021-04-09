@@ -14,9 +14,6 @@
 		3912C3FC26147F6700A3C3AA /* equate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3912C3FA26147F6700A3C3AA /* equate.xcdatamodeld */; };
 		3912C3FE26147F6900A3C3AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3912C3FD26147F6900A3C3AA /* Assets.xcassets */; };
 		3912C40126147F6900A3C3AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3912C3FF26147F6900A3C3AA /* LaunchScreen.storyboard */; };
-		6F5DBD77261F53CA0015A99A /* todayGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5DBD76261F53CA0015A99A /* todayGoalCard.swift */; };
-		6F682BF2261C6B2500CAC906 /* percentageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F682BF1261C6B2500CAC906 /* percentageCell.swift */; };
-		6F682BF5261D72E200CAC906 /* Path 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F682BF4261D72E200CAC906 /* Path 10.png */; };
 		39816631261DAA5700C12290 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39816630261DAA5700C12290 /* SuggestionViewController.swift */; };
 		39816634261DAADA00C12290 /* Suggestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39816633261DAADA00C12290 /* Suggestion.storyboard */; };
 		3981663A261DAB2300C12290 /* EquateCoredata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39816638261DAB2300C12290 /* EquateCoredata.xcdatamodeld */; };
@@ -34,9 +31,6 @@
 		3912C3FD26147F6900A3C3AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3912C40026147F6900A3C3AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3912C40226147F6900A3C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F5DBD76261F53CA0015A99A /* todayGoalCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todayGoalCard.swift; sourceTree = "<group>"; };
-		6F682BF1261C6B2500CAC906 /* percentageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = percentageCell.swift; sourceTree = "<group>"; };
-		6F682BF4261D72E200CAC906 /* Path 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Path 10.png"; path = "Assets.xcassets/Path 10.png"; sourceTree = "<group>"; };
 		39816630261DAA5700C12290 /* SuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		39816633261DAADA00C12290 /* Suggestion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Suggestion.storyboard; sourceTree = "<group>"; };
 		39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EquateCoredata.xcdatamodel; sourceTree = "<group>"; };
@@ -74,7 +68,6 @@
 		3912C3F026147F6700A3C3AA /* equate */ = {
 			isa = PBXGroup;
 			children = (
-				393FB2EC261EF41F001425C0 /* CustomView */,
 				39816636261DAB0000C12290 /* Model */,
 				3981662F261DAA3400C12290 /* SuggestionPage */,
 				3912C3F126147F6700A3C3AA /* AppDelegate.swift */,
@@ -87,17 +80,6 @@
 				6F682BF4261D72E200CAC906 /* Path 10.png */,
 			);
 			path = equate;
-			sourceTree = "<group>";
-		};
-		393FB2EC261EF41F001425C0 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-				6F5DBD76261F53CA0015A99A /* todayGoalCard.swift */,
-				3912C3F526147F6700A3C3AA /* ViewController.swift */,
-				3912C3F726147F6700A3C3AA /* Main.storyboard */,
-				6F682BF1261C6B2500CAC906 /* percentageCell.swift */,
-			);
-			path = CustomView;
 			sourceTree = "<group>";
 		};
 		3981662F261DAA3400C12290 /* SuggestionPage */ = {
@@ -199,7 +181,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F5DBD77261F53CA0015A99A /* todayGoalCard.swift in Sources */,
 				3912C3FC26147F6700A3C3AA /* equate.xcdatamodeld in Sources */,
 				3912C3F626147F6700A3C3AA /* ViewController.swift in Sources */,
 				6F682BF2261C6B2500CAC906 /* percentageCell.swift in Sources */,
