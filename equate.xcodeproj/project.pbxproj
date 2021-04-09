@@ -17,10 +17,11 @@
 		39816631261DAA5700C12290 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39816630261DAA5700C12290 /* SuggestionViewController.swift */; };
 		39816634261DAADA00C12290 /* Suggestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39816633261DAADA00C12290 /* Suggestion.storyboard */; };
 		3981663A261DAB2300C12290 /* EquateCoredata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39816638261DAB2300C12290 /* EquateCoredata.xcdatamodeld */; };
+		6F3F418326204D0F009696F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3F418226204D0F009696F0 /* ViewController.swift */; };
+		6F3F418726204D38009696F0 /* todayGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3F418626204D37009696F0 /* todayGoalCard.swift */; };
 		6F682BF2261C6B2500CAC906 /* percentageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F682BF1261C6B2500CAC906 /* percentageCell.swift */; };
 		6F682BF5261D72E200CAC906 /* Path 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F682BF4261D72E200CAC906 /* Path 10.png */; };
 		6FE2C23B262024EB0046BD7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FE2C239262024EB0046BD7C /* Main.storyboard */; };
-		6FE2C23F262026210046BD7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE2C23E262026210046BD7C /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +37,11 @@
 		39816630261DAA5700C12290 /* SuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		39816633261DAADA00C12290 /* Suggestion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Suggestion.storyboard; sourceTree = "<group>"; };
 		39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EquateCoredata.xcdatamodel; sourceTree = "<group>"; };
+		6F3F418226204D0F009696F0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6F3F418626204D37009696F0 /* todayGoalCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = todayGoalCard.swift; path = equate/Dashboard/todayGoalCard.swift; sourceTree = SOURCE_ROOT; };
 		6F682BF1261C6B2500CAC906 /* percentageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = percentageCell.swift; sourceTree = "<group>"; };
 		6F682BF4261D72E200CAC906 /* Path 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Path 10.png"; path = "Assets.xcassets/Path 10.png"; sourceTree = "<group>"; };
 		6FE2C23A262024EB0046BD7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../Downloads/equate-onboarding/equateApp 3.0/equateApp 3.0/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
-		6FE2C23E262026210046BD7C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = equate/ViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				3912C3F526147F6700A3C3AA /* DashboardViewController.swift */,
 				3912C3F726147F6700A3C3AA /* Dashboard.storyboard */,
 				6F682BF1261C6B2500CAC906 /* percentageCell.swift */,
+				6F3F418626204D37009696F0 /* todayGoalCard.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -117,7 +120,7 @@
 		6FE2C23D262025180046BD7C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				6FE2C23E262026210046BD7C /* ViewController.swift */,
+				6F3F418226204D0F009696F0 /* ViewController.swift */,
 				6FE2C239262024EB0046BD7C /* Main.storyboard */,
 			);
 			path = Onboarding;
@@ -199,10 +202,11 @@
 				3912C3FC26147F6700A3C3AA /* equate.xcdatamodeld in Sources */,
 				3912C3F626147F6700A3C3AA /* DashboardViewController.swift in Sources */,
 				6F682BF2261C6B2500CAC906 /* percentageCell.swift in Sources */,
-				6FE2C23F262026210046BD7C /* ViewController.swift in Sources */,
+				6F3F418726204D38009696F0 /* todayGoalCard.swift in Sources */,
 				3912C3F226147F6700A3C3AA /* AppDelegate.swift in Sources */,
 				3981663A261DAB2300C12290 /* EquateCoredata.xcdatamodeld in Sources */,
 				3912C3F426147F6700A3C3AA /* SceneDelegate.swift in Sources */,
+				6F3F418326204D0F009696F0 /* ViewController.swift in Sources */,
 				39816631261DAA5700C12290 /* SuggestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
