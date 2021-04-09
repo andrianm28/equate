@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:/Users/alifmahardhika/Desktop/equate/equate/new-activity"
+      name = "new-activity">
+      <FileRef
+         location = "group:NewActivity.storyboard">
+      </FileRef>
+      <FileRef
+         location = "group:NewActivityViewController.swift">
+      </FileRef>
+      <FileRef
+         location = "group:File.swift">
+      </FileRef>
+   </Group>
    <FileRef
       location = "self:">
    </FileRef>

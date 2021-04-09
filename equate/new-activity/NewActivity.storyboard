@@ -262,6 +262,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="acivityNameValue" destination="g7R-lJ-avX" id="3Ue-gP-TgM"/>
                         <outlet property="categoryButton" destination="9Yc-wU-qBI" id="1nw-cT-9Hr"/>
                         <outlet property="goalNameButton" destination="DbY-gJ-Wic" id="m6C-0E-acn"/>
                         <outlet property="iconButton" destination="P6h-Uf-ICC" id="2BO-iU-4Wg"/>
@@ -353,6 +354,9 @@ dashboard as one of your goals </string>
                         <viewLayoutGuide key="safeArea" id="LCH-Iz-4eP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="ArH-I6-cOl" id="zA3-dZ-VHS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0l-eO-xh8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
