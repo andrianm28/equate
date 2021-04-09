@@ -7,13 +7,22 @@
 
 import UIKit
 
-class SuggestionViewController: UIViewController{
+class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
     var catTitle = "Social"
-    var catPercentage = 0
+    var catPercentage = 50
     var catColor = "#BAB0F2"
     var catInfo = "No Data Available"
     var catTips = "Average Ideal time for Social is 2 hours / day Add new goal for Social to enhance your work-life-balance!"
+    var suggestionIcon: [UIImage] = [
+        UIImage(named: "callafriend")!,
+        UIImage(named: "coffeewithfriend")!,
+        UIImage(named: "surfsocialmedia")!
+    ]
+    var suggestionTitle = ["Grab Coffe with Friends", "Call a Friend", "Surf Social Media"]
+    var suggestionDuration = [30,30,30]
+    
+    @IBOutlet weak var suggestionSummary: UICollectionView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var percentageLabel: UILabel!
@@ -26,9 +35,8 @@ class SuggestionViewController: UIViewController{
     
     @IBOutlet weak var newGoalButton: UIButton!
     
-    @IBOutlet weak var textSummaryCV: UIView!
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var testView: UIView!
+    @IBOutlet weak var textSummaryCV: UIView!
     @IBOutlet weak var circleBar: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +57,11 @@ class SuggestionViewController: UIViewController{
         tipBodyLabel.text = catTips
     
         newGoalButton.layer.masksToBounds = true
-        alertLabel.layer.cornerRadius = 10
+        newGoalButton.layer.cornerRadius = 10
         
-        containerView.layer.cornerRadius = 10
         testView.layer.cornerRadius = 10
         circleBar.layer.cornerRadius = 10
         textSummaryCV.layer.cornerRadius = 10
-        containerView.backgroundColor = UIColor.clear
         
         testView.layer.shadowColor = UIColor.gray.cgColor
         testView.layer.shadowOpacity = 1
@@ -81,7 +87,7 @@ class SuggestionViewController: UIViewController{
         
         // progress layer
         shapeLayer.path = progressPath.cgPath
-        shapeLayer.strokeColor = hexStringToUIColor(hex: catColor).cgColor
+        shapeLayer.strokeColor = UIColor.purple.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 12
         shapeLayer.lineCap = CAShapeLayerLineCap.round
@@ -89,6 +95,31 @@ class SuggestionViewController: UIViewController{
         circleBar.layer.addSublayer(trackLayer)
         circleBar.layer.addSublayer(shapeLayer)
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "suggestionCellIdentifier", for: indexPath) as? SuggestionCell
+        
+        cell?.contentView.layer.cornerRadius = 10
+        suggestionSummary.backgroundColor = UIColor.clear
+        
+        cell?.layer.shadowColor = UIColor.gray.cgColor
+        cell?.layer.shadowOpacity = 1
+        cell?.layer.shadowOffset = CGSize(width: 0, height: 3)
+        cell?.layer.shadowRadius = 5
+        cell?.layer.masksToBounds = false
+        
+        cell?.suggestionIconIV.image = suggestionIcon[indexPath.row]
+        cell?.suggestionTitleLabel.text = suggestionTitle[indexPath.row]
+        cell?.suggestionDurationLabel.text = "\(suggestionDuration[indexPath.row]) minutes / day"
+        
+        return cell!
+    }
+    
     
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -111,16 +142,4 @@ class SuggestionViewController: UIViewController{
             alpha: CGFloat(1.0)
         )
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
