@@ -93,3 +93,6 @@ build/
 *~
 *.dat
 *.dep
+
+# user data injection
+**/xcuserdata/
