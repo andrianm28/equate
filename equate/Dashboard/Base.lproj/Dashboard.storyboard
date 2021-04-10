@@ -140,6 +140,17 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="AXr-Oc-DVy"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="nak-KG-BoV"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="082-Cm-LuR">
+                                <rect key="frame" x="76" y="694" width="239" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.30873820190000001" green="0.37575161460000001" blue="0.6039458513" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="BUTTON GEDE BANGET SENGAJA">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="JQt-xs-m2V" kind="show" id="6CG-w9-ece"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wednesday, 31 March 2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fJ-fa-6Bm">
                                 <rect key="frame" x="27" y="60" width="181" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -169,6 +180,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="730.76923076923072" y="115.16587677725119"/>
+        </scene>
+        <!--na-->
+        <scene sceneID="DdA-Sv-Tmi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewActivity" referencedIdentifier="na" id="JQt-xs-m2V" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="tJz-jy-iLi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BMN-zc-Mfv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1545" y="313"/>
         </scene>
         <!--Item-->
         <scene sceneID="CKv-Oj-olg">
