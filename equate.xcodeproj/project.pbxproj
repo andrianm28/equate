@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B8921082621895E00333F37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B8921072621895E00333F37 /* Main.storyboard */; };
 		3912C3F226147F6700A3C3AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912C3F126147F6700A3C3AA /* AppDelegate.swift */; };
 		3912C3F426147F6700A3C3AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912C3F326147F6700A3C3AA /* SceneDelegate.swift */; };
 		3912C3F626147F6700A3C3AA /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912C3F526147F6700A3C3AA /* DashboardViewController.swift */; };
@@ -21,10 +22,10 @@
 		6F3F418726204D38009696F0 /* todayGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3F418626204D37009696F0 /* todayGoalCard.swift */; };
 		6F682BF2261C6B2500CAC906 /* percentageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F682BF1261C6B2500CAC906 /* percentageCell.swift */; };
 		6F682BF5261D72E200CAC906 /* Path 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F682BF4261D72E200CAC906 /* Path 10.png */; };
-		6FE2C23B262024EB0046BD7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FE2C239262024EB0046BD7C /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B8921072621895E00333F37 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3912C3EE26147F6700A3C3AA /* equate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = equate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3912C3F126147F6700A3C3AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3912C3F326147F6700A3C3AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		6F3F418626204D37009696F0 /* todayGoalCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = todayGoalCard.swift; path = equate/Dashboard/todayGoalCard.swift; sourceTree = SOURCE_ROOT; };
 		6F682BF1261C6B2500CAC906 /* percentageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = percentageCell.swift; sourceTree = "<group>"; };
 		6F682BF4261D72E200CAC906 /* Path 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Path 10.png"; path = "Assets.xcassets/Path 10.png"; sourceTree = "<group>"; };
-		6FE2C23A262024EB0046BD7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../Downloads/equate-onboarding/equateApp 3.0/equateApp 3.0/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				6F3F418226204D0F009696F0 /* ViewController.swift */,
-				6FE2C239262024EB0046BD7C /* Main.storyboard */,
+				0B8921072621895E00333F37 /* Main.storyboard */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -183,8 +183,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8921082621895E00333F37 /* Main.storyboard in Resources */,
 				6F682BF5261D72E200CAC906 /* Path 10.png in Resources */,
-				6FE2C23B262024EB0046BD7C /* Main.storyboard in Resources */,
 				39816634261DAADA00C12290 /* Suggestion.storyboard in Resources */,
 				3912C40126147F6900A3C3AA /* LaunchScreen.storyboard in Resources */,
 				3912C3FE26147F6900A3C3AA /* Assets.xcassets in Resources */,
@@ -228,14 +228,6 @@
 				3912C40026147F6900A3C3AA /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		6FE2C239262024EB0046BD7C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6FE2C23A262024EB0046BD7C /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
