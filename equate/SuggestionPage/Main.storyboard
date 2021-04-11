@@ -12,7 +12,7 @@
         <!--Suggestion View Controller-->
         <scene sceneID="HVe-cr-mVs">
             <objects>
-                <viewController id="jmF-9q-DKw" customClass="SuggestionViewController" customModule="equate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SuggestionVC" id="jmF-9q-DKw" customClass="SuggestionViewController" customModule="equate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="By0-9S-zaQ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,52 +92,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNX-3Q-IpJ">
-                                <rect key="frame" x="24" y="454" width="116" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.7080623174574121" green="0.91261118649999995" blue="0.7068853834956409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Add new goal ">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suggestion Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gao-95-cY5">
-                                <rect key="frame" x="24" y="502" width="157" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g33-5l-72D">
-                                <rect key="frame" x="24" y="552" width="342" height="273"/>
+                                <rect key="frame" x="0.0" y="537" width="390" height="307"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="K9o-uj-27F">
-                                    <size key="itemSize" width="150" height="185"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="K9o-uj-27F">
+                                    <size key="itemSize" width="155" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="1"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="32" minY="16" maxX="32" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="suggestionCellIdentifier" id="u1d-AY-TWo" customClass="SuggestionCell" customModule="equate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="185"/>
+                                        <rect key="frame" x="32" y="17" width="155" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xky-n5-CaT">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="185"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="155" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="social_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Nsd-RB-HCr">
-                                                    <rect key="frame" x="45" y="0.0" width="60" height="60"/>
+                                                    <rect key="frame" x="47" y="21" width="60" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grab Coffe with Friends" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXc-rC-PyS">
-                                                    <rect key="frame" x="11" y="68" width="128" height="49"/>
+                                                    <rect key="frame" x="13" y="89" width="128" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30 minutes / day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4n-mW-46t">
-                                                    <rect key="frame" x="31" y="125" width="88" height="14"/>
+                                                    <rect key="frame" x="33" y="146" width="88" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                     <nil key="textColor"/>
@@ -145,6 +129,7 @@
                                                 </label>
                                             </subviews>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="suggestionDurationLabel" destination="R4n-mW-46t" id="a7E-a8-wB0"/>
                                             <outlet property="suggestionIconIV" destination="Nsd-RB-HCr" id="VQa-k4-uQb"/>
@@ -152,11 +137,29 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aeE-HQ-ZWZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="1"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="jmF-9q-DKw" id="ood-d5-h3J"/>
                                     <outlet property="delegate" destination="jmF-9q-DKw" id="Jzi-UK-bbB"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suggestion Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gao-95-cY5">
+                                <rect key="frame" x="24" y="453" width="157" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suggested goal and duratin you can add to your leausre's goal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGK-Mf-j0F">
+                                <rect key="frame" x="24" y="488" width="350" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zl1-bk-3bJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -177,7 +180,6 @@
                         <outlet property="alertLabel" destination="2QV-q8-poy" id="Wf1-fZ-Kzt"/>
                         <outlet property="circleBar" destination="TVk-be-gwg" id="CHh-EI-1Pa"/>
                         <outlet property="infoLabel" destination="HOM-iU-Wbe" id="lOu-PW-Twu"/>
-                        <outlet property="newGoalButton" destination="XNX-3Q-IpJ" id="fHE-SR-6YU"/>
                         <outlet property="percentageLabel" destination="mRE-VV-VV2" id="4Tc-7d-NxH"/>
                         <outlet property="suggestionSummary" destination="g33-5l-72D" id="cBB-aC-6ic"/>
                         <outlet property="testView" destination="wdc-Lo-LvZ" id="hW8-og-1Q8"/>

@@ -17,6 +17,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var dash_percent = [80,50,30,75]
     var dash_color = ["#A5B7FE","#F9CDAD","#BAB0F2","#B6F6C1"]
     
+    var selectedCell = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,6 +32,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let shapeLayer = CAShapeLayer()
         let trackLayer = CAShapeLayer()
+        
+        selectedCell = indexPath.row
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "percentCellIdentifier", for: indexPath) as? percentageCell
         

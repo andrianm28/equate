@@ -15,9 +15,9 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
     var catInfo = "No Data Available"
     var catTips = "Average Ideal time for Social is 2 hours / day Add new goal for Social to enhance your work-life-balance!"
     var suggestionIcon: [UIImage] = [
-        UIImage(named: "callafriend")!,
-        UIImage(named: "coffeewithfriend")!,
-        UIImage(named: "surfsocialmedia")!
+        UIImage(named: "callafriend-icon")!,
+        UIImage(named: "coffeewithfriend-icon")!,
+        UIImage(named: "surfsocialmedia-icon")!
     ]
     var suggestionTitle = ["Grab Coffe with Friends", "Call a Friend", "Surf Social Media"]
     var suggestionDuration = [30,30,30]
@@ -32,8 +32,6 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBOutlet weak var tipTitleLabel: UILabel!
     @IBOutlet weak var tipBodyLabel: UILabel!
-    
-    @IBOutlet weak var newGoalButton: UIButton!
     
     @IBOutlet weak var testView: UIView!
     @IBOutlet weak var textSummaryCV: UIView!
@@ -55,9 +53,6 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         
         tipTitleLabel.text = "Tip for your \(catTitle)"
         tipBodyLabel.text = catTips
-    
-        newGoalButton.layer.masksToBounds = true
-        newGoalButton.layer.cornerRadius = 10
         
         testView.layer.cornerRadius = 10
         circleBar.layer.cornerRadius = 10
@@ -104,7 +99,7 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "suggestionCellIdentifier", for: indexPath) as? SuggestionCell
         
-        cell?.contentView.layer.cornerRadius = 10
+        cell?.layer.cornerRadius = 10
         suggestionSummary.backgroundColor = UIColor.clear
         
         cell?.layer.shadowColor = UIColor.gray.cgColor
