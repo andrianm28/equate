@@ -73,6 +73,7 @@
                                                     <outlet property="cellInfo" destination="esa-3x-KFx" id="67t-SA-O6V"/>
                                                     <outlet property="cellPercent" destination="svz-EJ-hbA" id="aF4-dC-KYD"/>
                                                     <outlet property="cellTitle" destination="w5O-Vd-ybV" id="355-uq-Uhq"/>
+                                                    <segue destination="5Gr-m4-vFz" kind="show" identifier="toSuggestion" id="1MY-lT-hML"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -180,6 +181,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="730.76923076923072" y="115.16587677725119"/>
+        </scene>
+        <!--Suggestion-->
+        <scene sceneID="kQA-mb-yaS">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SuggestionVC" storyboardName="Suggestion" id="5Gr-m4-vFz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NjO-fA-JwA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Mb-wf-WAg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1667" y="60"/>
         </scene>
         <!--na-->
         <scene sceneID="DdA-Sv-Tmi">

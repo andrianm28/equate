@@ -19,9 +19,10 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         UIImage(named: "coffeewithfriend-icon")!,
         UIImage(named: "surfsocialmedia-icon")!
     ]
-    var suggestionTitle = ["Grab Coffe with Friends", "Call a Friend", "Surf Social Media"]
+    var suggestionTitle = ["Grab Coffee with Friends", "Call a Friend", "Surf Social Media"]
     var suggestionDuration = [30,30,30]
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var suggestionSummary: UICollectionView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -38,6 +39,7 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var circleBar: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
 
         // Do any additional setup after loading the view.
         let shapeLayer = CAShapeLayer()
@@ -46,6 +48,7 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         titleLabel.text = catTitle
         percentageLabel.text = "\(catPercentage)%"
         infoLabel.text = catInfo
+        
         
         alertLabel.layer.masksToBounds = true
         alertLabel.layer.cornerRadius = 10
@@ -76,13 +79,13 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
 
         
         trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = hexStringToUIColor(hex: catColor).cgColor
+        trackLayer.strokeColor = UIColor.gray.cgColor
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineWidth = 12
         
         // progress layer
         shapeLayer.path = progressPath.cgPath
-        shapeLayer.strokeColor = UIColor.purple.cgColor
+        shapeLayer.strokeColor = hexStringToUIColor(hex: catColor).cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 12
         shapeLayer.lineCap = CAShapeLayerLineCap.round
@@ -113,6 +116,15 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         cell?.suggestionDurationLabel.text = "\(suggestionDuration[indexPath.row]) minutes / day"
         
         return cell!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSuggestNewGoal" {
+            let selectedIndex = suggestionSummary.indexPath(for: sender as! UICollectionViewCell)
+            let destVC = segue.destination as? NewActivityViewController
+            
+            destVC?.newActivity.name = suggestionTitle[selectedIndex!.row]
+        }
     }
     
     
