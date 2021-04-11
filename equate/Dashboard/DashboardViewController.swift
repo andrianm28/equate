@@ -17,6 +17,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var dash_percent = [80,50,30,75]
     var dash_color = ["#A5B7FE","#F9CDAD","#BAB0F2","#B6F6C1"]
     
+    var selectedCell = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,6 +34,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let trackLayer = CAShapeLayer()
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "percentCellIdentifier", for: indexPath) as? percentageCell
+        
+        cell?.contentView.isUserInteractionEnabled = true
         
         cell?.contentView.layer.cornerRadius = 10
         summaryCollection.backgroundColor = UIColor.clear
@@ -76,6 +80,18 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         cell?.layer.addSublayer(shapeLayer)
         //assign cell title,percent, etc here
         return cell!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Do your stuff with selectedIndex.row as the index
+        if segue.identifier == "toSuggestion"  {
+            let selectedIndex = summaryCollection.indexPath(for: sender as! UICollectionViewCell)
+            let destVC = segue.destination as? SuggestionViewController
+            print("\(selectedCell) in suggestion")
+            destVC?.catTitle = dash_title[selectedIndex!.row]
+            destVC?.catColor = dash_color[selectedIndex!.row]
+            destVC?.catPercentage = dash_percent[selectedIndex!.row]
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
