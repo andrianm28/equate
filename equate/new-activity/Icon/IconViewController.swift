@@ -11,10 +11,11 @@ class IconViewController: UIViewController, UICollectionViewDataSource, UICollec
 
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        collectionView.register(IconCollectionViewCell.self, forCellWithReuseIdentifier: "IconCellIdetifier")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
