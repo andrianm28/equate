@@ -18,6 +18,9 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var repSwitch: UISwitch!
     @IBOutlet var dayCollection: [UIButton]!
     @IBOutlet weak var acivityNameValue: UILabel!
+    @IBOutlet weak var activityCategoryValue: UILabel!
+    @IBOutlet weak var activityDurationValue: UIDatePicker!
+    @IBOutlet weak var activityIconValue: UIImageView!
     var newActivity = Activity(name: "")
     
     override func viewDidLoad() {
@@ -29,6 +32,18 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
             setButton(butt: i!)
         }
         acivityNameValue.text = self.newActivity.name
+        activityCategoryValue.text = newActivity.category
+        
+        let duration = minutesToHoursAndMinutes((newActivity.duration != nil) ? newActivity.duration : 0)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        if let date = dateFormatter.date(from: "\((duration.hours != 0) ? duration.hours : 00):\((duration.leftMinutes != 0) ? duration.leftMinutes : 00)") {
+            print(date) // 2000-01-01 22:00:00 +0000
+            activityDurationValue.date = date
+        }
+        
+        activityIconValue.image = newActivity.icon
     }
     
     func pass(data: String) { //conforms to protocol
@@ -96,6 +111,14 @@ class inputGoalController: UIViewController {
     }
 }
 
+func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : Int) {
+    return (minutes / 60, (minutes % 60))
+}
+
+
 struct Activity {
     var name: String!
+    var icon: UIImage!
+    var category: String!
+    var duration: Int!
 }

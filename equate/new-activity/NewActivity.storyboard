@@ -263,6 +263,9 @@
                     </view>
                     <connections>
                         <outlet property="acivityNameValue" destination="g7R-lJ-avX" id="3Ue-gP-TgM"/>
+                        <outlet property="activityCategoryValue" destination="baJ-hY-vaB" id="wCd-6g-NjC"/>
+                        <outlet property="activityDurationValue" destination="yKH-2f-VHl" id="pNH-Sx-vSC"/>
+                        <outlet property="activityIconValue" destination="Mt3-oe-7ew" id="SFH-eb-Z19"/>
                         <outlet property="categoryButton" destination="9Yc-wU-qBI" id="1nw-cT-9Hr"/>
                         <outlet property="goalNameButton" destination="DbY-gJ-Wic" id="m6C-0E-acn"/>
                         <outlet property="iconButton" destination="P6h-Uf-ICC" id="2BO-iU-4Wg"/>

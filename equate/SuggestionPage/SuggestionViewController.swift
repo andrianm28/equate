@@ -20,7 +20,7 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         UIImage(named: "surfsocialmedia-icon")!
     ]
     var suggestionTitle = ["Grab Coffee with Friends", "Call a Friend", "Surf Social Media"]
-    var suggestionDuration = [30,30,30]
+    var suggestionDuration = [130,30,30]
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var suggestionSummary: UICollectionView!
@@ -124,6 +124,9 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
             let destVC = segue.destination as? NewActivityViewController
             
             destVC?.newActivity.name = suggestionTitle[selectedIndex!.row]
+            destVC?.newActivity.category = catTitle
+            destVC?.newActivity.duration = suggestionDuration[selectedIndex!.row]
+            destVC?.newActivity.icon = suggestionIcon[selectedIndex!.row]
         }
     }
     
