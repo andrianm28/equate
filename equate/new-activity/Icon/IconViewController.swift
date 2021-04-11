@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IconViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class IconViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
 
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -19,13 +19,20 @@ class IconViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return icons.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as! IconCollectionViewCell
+        
+        
+        cell.setup(with: icons[indexPath.row])
+        
         return cell
         
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 190)
     }
     
 
