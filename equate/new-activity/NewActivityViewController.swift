@@ -6,6 +6,10 @@
 //
 
 import UIKit
+
+
+
+
 protocol isAbleToReceiveData {
   func pass(data: String)  //data: string is an example parameter
 }
