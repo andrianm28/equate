@@ -244,11 +244,17 @@
                                 <rect key="frame" x="345" y="179" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="????"/>
+                                <connections>
+                                    <segue destination="cey-Tm-gEm" kind="presentation" id="Dzv-Pt-zJD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6h-Uf-ICC">
                                 <rect key="frame" x="344" y="247" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="????"/>
+                                <connections>
+                                    <segue destination="dcx-DF-7do" kind="presentation" id="yai-6P-BFA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrB-ce-gWY">
                                 <rect key="frame" x="32" y="252" width="35" height="21"/>
@@ -364,6 +370,22 @@ dashboard as one of your goals </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0l-eO-xh8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1251" y="109"/>
+        </scene>
+        <!--Category-->
+        <scene sceneID="nIo-Bl-b5S">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Category" id="cey-Tm-gEm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2HH-Rw-dZ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="602"/>
+        </scene>
+        <!--Icon-->
+        <scene sceneID="tec-lP-nK8">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Icon.storyboard" storyboardName="Icon" id="dcx-DF-7do" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nTV-n3-uO8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999" y="611"/>
         </scene>
     </scenes>
     <resources>
