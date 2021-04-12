@@ -24,6 +24,7 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var activityIconValue: UIImageView!
     @IBOutlet var clickableView: [UIView]!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var timePicker: UIDatePicker!
     var newGoal = NewGoal(name: "")
     
     override func viewDidLoad() {
@@ -86,11 +87,27 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         }
         
     }
+    @IBAction func saveButtonClicked(_ sender: Any) {
+//        print(type(of:timePicker.date))
+        let timeFormatter = DateFormatter()
+            timeFormatter.timeStyle = DateFormatter.Style.short
+
+        newGoal.time = timePicker.date
+        print(type(of:activityDurationValue.date))
+        
+        let components = Calendar.current.dateComponents([.hour, .minute], from: activityDurationValue.date)
+        let hour = components.hour!
+        let minute = components.minute!
+        let totalDurationMinutes = (hour*60)+minute
+        newGoal.durationInMinutes = totalDurationMinutes
+        
+    }
     
     
     @IBAction func checkRepeatEveryday(_ sender: Any) {
         for day in dayCollection{
             day.isSelected = repSwitch.isOn
+            setRepeatValue(index: dayCollection.firstIndex(of: day)!)
         }
         
     }
@@ -141,6 +158,7 @@ struct NewGoal {
     var name: String!
     var icon: UIImage!
     var category: String!
+    var time: Date!
     var durationInMinutes: Int!
 //    repetition
     var mon: Bool = false
