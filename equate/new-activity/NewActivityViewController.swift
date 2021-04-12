@@ -38,8 +38,14 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         for i in chevronArr{
             setButton(butt: i!)
         }
-//        acivityNameValue.text = self.newActivity.name
-//        activityCategoryValue.text = newActivity.category
+        
+        activityCategoryValue.text = newActivity.category
+        if newActivity.icon != nil {
+            activityIconValue.image = newActivity.icon
+            iconTextValue.text = ""
+        }
+        nameTextField.text = newActivity.name
+        
         
         let duration = minutesToHoursAndMinutes((newActivity.duration != nil) ? newActivity.duration : 0)
 
@@ -50,7 +56,6 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
             activityDurationValue.date = date
         }
         
-        activityIconValue.image = newActivity.icon
     }
     
     func pass(data: String) { //conforms to protocol
