@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 protocol isAbleToReceiveData {
   func pass(data: String)  //data: string is an example parameter
 }
@@ -22,7 +24,7 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var activityIconValue: UIImageView!
     @IBOutlet var clickableView: [UIView]!
     @IBOutlet weak var nameTextField: UITextField!
-    var newActivity = Activity(name: "")
+    var newGoal = NewGoal(name: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,23 +42,12 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         }
 //        acivityNameValue.text = self.newActivity.name
 //        activityCategoryValue.text = newActivity.category
-        
-        let duration = minutesToHoursAndMinutes((newActivity.duration != nil) ? newActivity.duration : 0)
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        if let date = dateFormatter.date(from: "\((duration.hours != 0) ? duration.hours : 00):\((duration.leftMinutes != 0) ? duration.leftMinutes : 00)") {
-            print(date) // 2000-01-01 22:00:00 +0000
-            activityDurationValue.date = date
-        }
-        
-        activityIconValue.image = newActivity.icon
     }
     
     func pass(data: String) { //conforms to protocol
         print("called")
         print(data)
-        newActivity.name=data
+        newGoal.name = data
 //        acivityNameValue.text = data
       // implement your own implementation
        }
@@ -64,7 +55,39 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         if repSwitch.isOn{repSwitch.isOn = !repSwitch.isOn}
         print(String(sender.titleLabel!.text!))
         sender.isSelected = !sender.isSelected
+        print(newGoal.wed)
+        for i in dayCollection{
+            if i == sender{
+                setRepeatValue(index: dayCollection.firstIndex(of: i)!)
+                
+            }
+        }
+        print(newGoal.wed)
     }
+    
+    func setRepeatValue(index: Int){
+        switch index {
+        case 0:
+            newGoal.sun = !newGoal.sun
+        case 1:
+            newGoal.mon = !newGoal.mon
+        case 2:
+            newGoal.tue = !newGoal.tue
+        case 3:
+            newGoal.wed = !newGoal.wed
+        case 4:
+            newGoal.thu = !newGoal.thu
+        case 5:
+            newGoal.fri = !newGoal.fri
+        case 6:
+            newGoal.sat = !newGoal.sat
+        default:
+            print(index)
+        }
+        
+    }
+    
+    
     @IBAction func checkRepeatEveryday(_ sender: Any) {
         for day in dayCollection{
             day.isSelected = repSwitch.isOn
@@ -99,8 +122,14 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         dismiss(animated: true, completion: nil)
     }
     
+//    COREDATA STACK
+    func getCoreDataContext() -> NSManagedObjectContext{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    
 
-//    INPUT GOAL NAME CONTROLLER
 }
 
 func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : Int) {
@@ -108,9 +137,18 @@ func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : 
 }
 
 
-struct Activity {
+struct NewGoal {
     var name: String!
     var icon: UIImage!
     var category: String!
-    var duration: Int!
+    var durationInMinutes: Int!
+//    repetition
+    var mon: Bool = false
+    var tue: Bool = false
+    var wed: Bool = false
+    var thu: Bool = false
+    var fri: Bool = false
+    var sat: Bool = false
+    var sun: Bool = false
 }
+
