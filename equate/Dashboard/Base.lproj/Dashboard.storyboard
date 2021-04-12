@@ -3,13 +3,14 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Dashboard-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DashboardViewController" customModule="equate" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,14 +83,14 @@
                                         </connections>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today's Goal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IO-su-Hp1">
-                                        <rect key="frame" x="47" y="486" width="152" height="22"/>
+                                        <rect key="frame" x="47" y="559" width="152" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="412-hq-18t">
-                                        <rect key="frame" x="36" y="516" width="358" height="355"/>
+                                        <rect key="frame" x="36" y="589" width="358" height="355"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -136,21 +137,25 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="nrn-04-BkO"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="082-Cm-LuR">
+                                        <rect key="frame" x="36" y="487" width="358" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.30873820190000001" green="0.37575161460000001" blue="0.6039458513" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Add Goal">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="JQt-xs-m2V" kind="show" id="6CG-w9-ece"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="AXr-Oc-DVy"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="nak-KG-BoV"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="082-Cm-LuR">
-                                <rect key="frame" x="76" y="694" width="239" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.30873820190000001" green="0.37575161460000001" blue="0.6039458513" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="BUTTON GEDE BANGET SENGAJA">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="JQt-xs-m2V" kind="show" id="6CG-w9-ece"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wednesday, 31 March 2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fJ-fa-6Bm">
                                 <rect key="frame" x="27" y="60" width="181" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -169,9 +174,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="szw-ke-YoK"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="square.grid.2x2.fill" catalog="system" id="szw-ke-YoK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addGoalButton" destination="082-Cm-LuR" id="i5l-5i-0Fh"/>
                         <outlet property="scrollView" destination="ris-Py-FCD" id="gPd-2k-ylJ"/>
                         <outlet property="summaryCollection" destination="N9L-K1-70R" id="TmH-Ko-WFJ"/>
                         <outlet property="todayGoalView" destination="412-hq-18t" id="jND-tt-5Pv"/>
@@ -191,7 +197,7 @@
             </objects>
             <point key="canvasLocation" x="1545" y="313"/>
         </scene>
-        <!--Item-->
+        <!--Goals-->
         <scene sceneID="CKv-Oj-olg">
             <objects>
                 <viewController id="C8i-c7-o33" sceneMemberID="viewController">
@@ -201,16 +207,16 @@
                         <viewLayoutGuide key="safeArea" id="APt-2Q-z4V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Uxo-Rn-Tn2"/>
+                    <tabBarItem key="tabBarItem" title="Goals" image="list.dash" catalog="system" id="Uxo-Rn-Tn2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35I-D0-dWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="736" y="768"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="aTc-SA-RQ3">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="UMS-bF-ZLx" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="UMS-bF-ZLx" customClass="TabBarViewController" customModule="equate" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cfg-IB-MCe">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -218,6 +224,7 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBar" destination="cfg-IB-MCe" id="niU-Tt-3uX"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Mjx-LF-0Y3"/>
                         <segue destination="C8i-c7-o33" kind="relationship" relationship="viewControllers" id="cTa-It-UW8"/>
                     </connections>
@@ -229,7 +236,10 @@
     </scenes>
     <resources>
         <image name="Path 10.png" width="390" height="331"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
