@@ -97,6 +97,9 @@
                                         <rect key="frame" x="311" y="5" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="????"/>
+                                        <connections>
+                                            <segue destination="cey-Tm-gEm" kind="show" id="pcZ-hA-O9B"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose the category of your goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJ5-1l-8KZ">
                                         <rect key="frame" x="8" y="10" width="254" height="21"/>
@@ -193,6 +196,9 @@
                                         <rect key="frame" x="311" y="5" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="????"/>
+                                        <connections>
+                                            <segue destination="dcx-DF-7do" kind="show" id="dIj-6I-Uoe"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D79-3e-M64">
                                         <rect key="frame" x="8" y="1" width="40" height="40"/>
@@ -278,18 +284,22 @@
         <!--Category-->
         <scene sceneID="nIo-Bl-b5S">
             <objects>
-                <viewControllerPlaceholder storyboardName="Category" id="cey-Tm-gEm" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Category" id="cey-Tm-gEm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8vy-Ht-2zf"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2HH-Rw-dZ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="330" y="602"/>
+            <point key="canvasLocation" x="998" y="-48"/>
         </scene>
         <!--Icon-->
         <scene sceneID="tec-lP-nK8">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Icon.storyboard" storyboardName="Icon" id="dcx-DF-7do" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="Icon.storyboard" storyboardName="Icon" id="dcx-DF-7do" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zdV-1T-gef"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTV-n3-uO8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="611"/>
+            <point key="canvasLocation" x="975" y="8"/>
         </scene>
     </scenes>
     <resources>
