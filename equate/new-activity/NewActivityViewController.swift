@@ -104,7 +104,6 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         dismiss(animated: true, completion: nil)
     }
     
-    
 
 //    INPUT GOAL NAME CONTROLLER
 }
