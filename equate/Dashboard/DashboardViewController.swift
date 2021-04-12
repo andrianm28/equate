@@ -13,6 +13,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var todayGoalView: UITableView!
     @IBOutlet weak var summaryCollection: UICollectionView!
+    @IBOutlet weak var addGoalButton: UIButton!
     var dash_title = ["Productivity","Leisure Time","Social","Rest and Sleep"]
     var dash_percent = [80,50,30,75]
     var dash_color = ["#A5B7FE","#F9CDAD","#BAB0F2","#B6F6C1"]
@@ -23,6 +24,12 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
+        configureButton()
+    }
+    
+    func configureButton(){
+        addGoalButton.layer.cornerRadius = 10
+        addGoalButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
