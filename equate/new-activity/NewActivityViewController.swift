@@ -12,27 +12,34 @@ protocol isAbleToReceiveData {
 
 class NewActivityViewController: UIViewController, isAbleToReceiveData {
     
-    @IBOutlet weak var goalNameButton: UIButton!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var repSwitch: UISwitch!
     @IBOutlet var dayCollection: [UIButton]!
-    @IBOutlet weak var acivityNameValue: UILabel!
     @IBOutlet weak var activityCategoryValue: UILabel!
     @IBOutlet weak var activityDurationValue: UIDatePicker!
+    @IBOutlet weak var iconTextValue: UILabel!
     @IBOutlet weak var activityIconValue: UIImageView!
+    @IBOutlet var clickableView: [UIView]!
+    @IBOutlet weak var nameTextField: UITextField!
     var newActivity = Activity(name: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let chevronArr = [goalNameButton, categoryButton, iconButton]
+        for i in clickableView{
+            i.layer.borderWidth = 1
+            i.layer.borderColor = UIColor.lightGray.cgColor
+            i.layer.cornerRadius = 10
+        }
+        
+        let chevronArr = [categoryButton, iconButton]
 //        let dayArr = ["Sun", "Mon", "Tue", "Wed","Thu","Fri","Sat"]
 //        set every chevron butt
         for i in chevronArr{
             setButton(butt: i!)
         }
-        acivityNameValue.text = self.newActivity.name
-        activityCategoryValue.text = newActivity.category
+//        acivityNameValue.text = self.newActivity.name
+//        activityCategoryValue.text = newActivity.category
         
         let duration = minutesToHoursAndMinutes((newActivity.duration != nil) ? newActivity.duration : 0)
 
@@ -50,7 +57,7 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         print("called")
         print(data)
         newActivity.name=data
-        acivityNameValue.text = data
+//        acivityNameValue.text = data
       // implement your own implementation
        }
     @IBAction func selectDayRepeat(_ sender: UIButton) {
@@ -73,13 +80,19 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         butt.setTitle("", for: .normal)
         butt.tintColor = UIColor.lightGray
     }
-
+    
+    @IBAction func changeNameField(_ sender: Any) {
+        nameTextField.text = ""
+        nameTextField.textColor = UIColor.black
+        
+    }
+    
     @IBAction func tapSetGoal(_ sender: Any) {
-//        present(inputGoalController(), animated: true)
-        let vc = storyboard?.instantiateViewController(identifier: "inputGoal") as! inputGoalController
-//      present new storyboard
-        vc.delegate = self
-        present(vc, animated: true)
+////        present(inputGoalController(), animated: true)
+//        let vc = storyboard?.instantiateViewController(identifier: "inputGoal") as! inputGoalController
+////      present new storyboard
+//        vc.delegate = self
+//        present(vc, animated: true)
     }
 //    dismiss storyboard
     @IBAction func backtoDash(_ sender: Any) {
