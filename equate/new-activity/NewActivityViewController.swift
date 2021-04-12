@@ -89,6 +89,8 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         let minute = components.minute!
         let totalDurationMinutes = (hour*60)+minute
         newGoal.durationInMinutes = totalDurationMinutes
+        
+        newGoal.name = nameTextField.text
         print(newGoal)
         
     }
