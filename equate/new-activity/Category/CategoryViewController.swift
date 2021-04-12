@@ -19,6 +19,9 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         // Do any additional setup after loading the view.
         
     }
+    @IBAction func cellTapped(_ sender: UIButton) {
+        print(sender.currentTitle!)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
@@ -34,8 +37,14 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.contentView.layer.masksToBounds = true
         cell.backgroundColor = UIColor.white
         
-        
+        let editButton = UIButton(frame: CGRect(x:0, y:20, width:184,height:247))
+        editButton.addTarget(self, action: #selector(cellTapped), for: UIControl.Event.touchUpInside)
+        editButton.setTitle(categories[indexPath.row].title, for: .normal)
+        editButton.setTitleColor(UIColor.clear, for: .normal)
+
         cell.setup(with: categories[indexPath.row])
+        cell.addSubview(editButton)
+        
         
         return cell
     }
