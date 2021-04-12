@@ -27,11 +27,13 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCellIdentifier", for: indexPath) as! CategoryCollectionViewCell
         
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowRadius = 5
-        cell.backgroundColor = UIColor.clear
         cell.contentView.layer.cornerRadius = 10
-        cell.layer.cornerRadius = 5
+        cell.contentView.layer.borderWidth = 1.0
+        
+        
+        cell.contentView.layer.masksToBounds = true
+        cell.backgroundColor = UIColor.white
+        
         
         cell.setup(with: categories[indexPath.row])
         
@@ -39,6 +41,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:IndexPath) -> CGSize {
-        return CGSize(width: 187, height: 271)
+        return CGSize(width: 171, height: 234)
     }
 }
