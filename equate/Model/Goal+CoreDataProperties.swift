@@ -17,7 +17,6 @@ extension Goal {
     }
 
     @NSManaged public var category: String?
-    @NSManaged public var date: Date?
     @NSManaged public var duration: Double
     @NSManaged public var name: String?
     @NSManaged public var repeatEvery: Repetition?

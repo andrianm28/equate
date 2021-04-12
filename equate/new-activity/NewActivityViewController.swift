@@ -6,10 +6,6 @@
 //
 
 import UIKit
-
-
-
-
 protocol isAbleToReceiveData {
   func pass(data: String)  //data: string is an example parameter
 }
@@ -102,7 +98,6 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBAction func backtoDash(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
     
 
 //    INPUT GOAL NAME CONTROLLER

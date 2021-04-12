@@ -18,7 +18,7 @@ extension CategoryGoal {
 
     @NSManaged public var category: String?
     @NSManaged public var target_in_minutes: Int64
-    @NSManaged public var progress_in_minutes: NSObject?
+    @NSManaged public var progress_in_minutes: Int64
 
 }
 
