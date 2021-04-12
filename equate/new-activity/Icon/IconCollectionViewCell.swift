@@ -25,16 +25,16 @@ struct Icon {
 }
 
 let icons: [Icon] = [
+    Icon(title: "Productivity", image: #imageLiteral(resourceName: "running")),
+    Icon(title: "", image: #imageLiteral(resourceName: "open-book")),
+    Icon(title: "", image: #imageLiteral(resourceName: "chef")),
     Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "phone-call")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "breakfast-tray")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail"))
+    Icon(title: "", image: #imageLiteral(resourceName: "bowling-pins")),
+    Icon(title: "", image: #imageLiteral(resourceName: "leisure-2")),
+    Icon(title: "Social", image: #imageLiteral(resourceName: "businessmen")),
+    Icon(title: "", image: #imageLiteral(resourceName: "phone-call")),
+    Icon(title: "", image: #imageLiteral(resourceName: "breakfast-tray")),
+    Icon(title: "Rest & Sleep", image: #imageLiteral(resourceName: "moon")),
+    Icon(title: "", image: #imageLiteral(resourceName: "heart")),
+    Icon(title: "", image: #imageLiteral(resourceName: "rest"))
 ]
