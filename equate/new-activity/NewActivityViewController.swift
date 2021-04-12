@@ -19,9 +19,8 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var repSwitch: UISwitch!
     @IBOutlet var dayCollection: [UIButton]!
     @IBOutlet weak var activityCategoryValue: UILabel!
+    @IBOutlet weak var activityIconValue: UIButton!
     @IBOutlet weak var activityDurationValue: UIDatePicker!
-    @IBOutlet weak var iconTextValue: UILabel!
-    @IBOutlet weak var activityIconValue: UIImageView!
     @IBOutlet var clickableView: [UIView]!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var timePicker: UIDatePicker!
@@ -29,25 +28,16 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         for i in clickableView{
             i.layer.borderWidth = 1
             i.layer.borderColor = UIColor.lightGray.cgColor
             i.layer.cornerRadius = 10
         }
-        
-        let chevronArr = [categoryButton, iconButton]
-//        let dayArr = ["Sun", "Mon", "Tue", "Wed","Thu","Fri","Sat"]
-//        set every chevron butt
-        for i in chevronArr{
-            setButton(butt: i!)
-        }
-//        acivityNameValue.text = self.newActivity.name
-//        activityCategoryValue.text = newActivity.category
+        setButton(butt: categoryButton!)
     }
     
     func pass(data: String) { //conforms to protocol
-        print("called")
-        print(data)
         newGoal.name = data
 //        acivityNameValue.text = data
       // implement your own implementation
@@ -63,7 +53,6 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
                 
             }
         }
-        print(newGoal.wed)
     }
     
     func setRepeatValue(index: Int){
@@ -100,6 +89,7 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         let minute = components.minute!
         let totalDurationMinutes = (hour*60)+minute
         newGoal.durationInMinutes = totalDurationMinutes
+        print(newGoal)
         
     }
     

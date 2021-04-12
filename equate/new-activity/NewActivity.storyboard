@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -63,7 +64,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="pbF-a8-cK5">
-                                <rect key="frame" x="24" y="359" width="198" height="53"/>
+                                <rect key="frame" x="24" y="365" width="198" height="53"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter the name of your goal" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZAg-Ty-CiJ">
@@ -175,32 +176,6 @@
                                     <action selector="selectDayRepeat:" destination="jC7-Ma-F36" eventType="touchUpInside" id="nsO-7w-r0H"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-Le-Sx2">
-                                <rect key="frame" x="24" y="269" width="341" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-dp-DOT">
-                                        <rect key="frame" x="311" y="5" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="????"/>
-                                        <connections>
-                                            <segue destination="dcx-DF-7do" kind="show" id="dIj-6I-Uoe"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D79-3e-M64">
-                                        <rect key="frame" x="8" y="1" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose the icon of your goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezW-R8-Glx">
-                                        <rect key="frame" x="8" y="10" width="218" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dpe-WX-gqh">
                                 <rect key="frame" x="321" y="584" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -220,7 +195,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-Gv-RJC">
-                                <rect key="frame" x="24" y="330" width="38" height="21"/>
+                                <rect key="frame" x="24" y="336" width="38" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -245,6 +220,15 @@
                                     <action selector="saveButtonClicked:" destination="jC7-Ma-F36" eventType="touchUpInside" id="s3T-KM-QhV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaP-gX-Wy8">
+                                <rect key="frame" x="24" y="269" width="41" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Yr-U0-wBs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -252,10 +236,8 @@
                     <connections>
                         <outlet property="activityCategoryValue" destination="iJ5-1l-8KZ" id="Swp-XV-fTg"/>
                         <outlet property="activityDurationValue" destination="LaQ-bz-HQP" id="4Ob-Gb-Qfv"/>
-                        <outlet property="activityIconValue" destination="D79-3e-M64" id="sTn-c0-fbz"/>
+                        <outlet property="activityIconValue" destination="QaP-gX-Wy8" id="PO6-dz-tmb"/>
                         <outlet property="categoryButton" destination="XEw-Ai-aYg" id="4xV-mr-NuV"/>
-                        <outlet property="iconButton" destination="Mi9-dp-DOT" id="heh-Qp-JL3"/>
-                        <outlet property="iconTextValue" destination="ezW-R8-Glx" id="gSc-b2-CKD"/>
                         <outlet property="nameTextField" destination="ZAg-Ty-CiJ" id="cgU-cs-RK2"/>
                         <outlet property="repSwitch" destination="dpe-WX-gqh" id="1Xg-Yc-hZu"/>
                         <outlet property="timePicker" destination="pbF-a8-cK5" id="tmB-lg-nyF"/>
@@ -267,7 +249,6 @@
                         <outletCollection property="dayCollection" destination="Mxu-2w-jtP" collectionClass="NSMutableArray" id="MwY-bB-Jih"/>
                         <outletCollection property="dayCollection" destination="cLI-Jr-s5K" collectionClass="NSMutableArray" id="kK9-Zf-3G7"/>
                         <outletCollection property="clickableView" destination="YGf-g8-cIA" collectionClass="NSMutableArray" id="JWq-ll-Wu9"/>
-                        <outletCollection property="clickableView" destination="oAx-Le-Sx2" collectionClass="NSMutableArray" id="rju-vb-rpd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jt1-7F-jRw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -296,6 +277,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
