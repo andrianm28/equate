@@ -102,26 +102,6 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
 
 //    INPUT GOAL NAME CONTROLLER
 }
-class inputGoalController: UIViewController {
-    var delegate: isAbleToReceiveData!
-    @IBOutlet weak var nameTextField: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    func viewWillDisappear() {
-          delegate.pass(data: "someData") //call the func in the previous vc
-      }
-    @IBAction func closethisshit(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    @IBAction func doneInput(_ sender: Any) {
-//        TODO SAVE INPUT
-        dismiss(animated: true, completion: nil)
-        delegate.pass(data: nameTextField.text!)
-
-    }
-}
 
 func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : Int) {
     return (minutes / 60, (minutes % 60))
