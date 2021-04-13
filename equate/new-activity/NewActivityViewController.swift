@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 protocol isAbleToReceiveData {
   func pass(data: String)  //data: string is an example parameter
 }
@@ -17,51 +19,26 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var repSwitch: UISwitch!
     @IBOutlet var dayCollection: [UIButton]!
     @IBOutlet weak var activityCategoryValue: UILabel!
+    @IBOutlet weak var activityIconValue: UIButton!
     @IBOutlet weak var activityDurationValue: UIDatePicker!
-    @IBOutlet weak var iconTextValue: UILabel!
-    @IBOutlet weak var activityIconValue: UIImageView!
     @IBOutlet var clickableView: [UIView]!
     @IBOutlet weak var nameTextField: UITextField!
-    var newActivity = Activity(name: "")
+    @IBOutlet weak var timePicker: UIDatePicker!
+    var newGoal = NewGoal(name: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         for i in clickableView{
             i.layer.borderWidth = 1
             i.layer.borderColor = UIColor.lightGray.cgColor
             i.layer.cornerRadius = 10
         }
-        
-        let chevronArr = [categoryButton, iconButton]
-//        let dayArr = ["Sun", "Mon", "Tue", "Wed","Thu","Fri","Sat"]
-//        set every chevron butt
-        for i in chevronArr{
-            setButton(butt: i!)
-        }
-        
-        activityCategoryValue.text = newActivity.category
-        if newActivity.icon != nil {
-            activityIconValue.image = newActivity.icon
-            iconTextValue.text = ""
-        }
-        nameTextField.text = newActivity.name
-        
-        
-        let duration = minutesToHoursAndMinutes((newActivity.duration != nil) ? newActivity.duration : 0)
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        if let date = dateFormatter.date(from: "\((duration.hours != 0) ? duration.hours : 00):\((duration.leftMinutes != 0) ? duration.leftMinutes : 00)") {
-            print(date) // 2000-01-01 22:00:00 +0000
-            activityDurationValue.date = date
-        }
-        
+        setButton(butt: categoryButton!)
     }
     
     func pass(data: String) { //conforms to protocol
-        print("called")
-        print(data)
-        newActivity.name=data
+        newGoal.name = data
 //        acivityNameValue.text = data
       // implement your own implementation
        }
@@ -69,10 +46,60 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         if repSwitch.isOn{repSwitch.isOn = !repSwitch.isOn}
         print(String(sender.titleLabel!.text!))
         sender.isSelected = !sender.isSelected
+        print(newGoal.wed)
+        for i in dayCollection{
+            if i == sender{
+                setRepeatValue(index: dayCollection.firstIndex(of: i)!)
+                
+            }
+        }
     }
+    
+    func setRepeatValue(index: Int){
+        switch index {
+        case 0:
+            newGoal.sun = !newGoal.sun
+        case 1:
+            newGoal.mon = !newGoal.mon
+        case 2:
+            newGoal.tue = !newGoal.tue
+        case 3:
+            newGoal.wed = !newGoal.wed
+        case 4:
+            newGoal.thu = !newGoal.thu
+        case 5:
+            newGoal.fri = !newGoal.fri
+        case 6:
+            newGoal.sat = !newGoal.sat
+        default:
+            print(index)
+        }
+        
+    }
+    @IBAction func saveButtonClicked(_ sender: Any) {
+//        print(type(of:timePicker.date))
+        let timeFormatter = DateFormatter()
+            timeFormatter.timeStyle = DateFormatter.Style.short
+
+        newGoal.time = timePicker.date
+        print(type(of:activityDurationValue.date))
+        
+        let components = Calendar.current.dateComponents([.hour, .minute], from: activityDurationValue.date)
+        let hour = components.hour!
+        let minute = components.minute!
+        let totalDurationMinutes = (hour*60)+minute
+        newGoal.durationInMinutes = totalDurationMinutes
+        
+        newGoal.name = nameTextField.text
+        print(newGoal)
+        
+    }
+    
+    
     @IBAction func checkRepeatEveryday(_ sender: Any) {
         for day in dayCollection{
             day.isSelected = repSwitch.isOn
+            setRepeatValue(index: dayCollection.firstIndex(of: day)!)
         }
         
     }
@@ -104,28 +131,14 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         dismiss(animated: true, completion: nil)
     }
     
-
-//    INPUT GOAL NAME CONTROLLER
-}
-class inputGoalController: UIViewController {
-    var delegate: isAbleToReceiveData!
-    @IBOutlet weak var nameTextField: UITextField!
+//    COREDATA STACK
+    func getCoreDataContext() -> NSManagedObjectContext{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    func viewWillDisappear() {
-          delegate.pass(data: "someData") //call the func in the previous vc
-      }
-    @IBAction func closethisshit(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    @IBAction func doneInput(_ sender: Any) {
-//        TODO SAVE INPUT
-        dismiss(animated: true, completion: nil)
-        delegate.pass(data: nameTextField.text!)
+    
 
-    }
 }
 
 func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : Int) {
@@ -133,9 +146,19 @@ func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : 
 }
 
 
-struct Activity {
+struct NewGoal {
     var name: String!
     var icon: UIImage!
     var category: String!
-    var duration: Int!
+    var time: Date!
+    var durationInMinutes: Int!
+//    repetition
+    var mon: Bool = false
+    var tue: Bool = false
+    var wed: Bool = false
+    var thu: Bool = false
+    var fri: Bool = false
+    var sat: Bool = false
+    var sun: Bool = false
 }
+

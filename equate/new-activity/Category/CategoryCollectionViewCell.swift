@@ -12,6 +12,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryImage: UIImageView!
     
+  
     func setup(with category: Category)  {
         categoryImage.image = category.Image
         categoryLabel.text = category.title
