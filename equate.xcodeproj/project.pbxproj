@@ -19,6 +19,9 @@
 		0B5C859926243372006C66A7 /* Dashboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5C859126243372006C66A7 /* Dashboard+CoreDataProperties.swift */; };
 		0B8921082621895E00333F37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B8921072621895E00333F37 /* Main.storyboard */; };
 		390681C726201016003E51C1 /* SuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390681C626201016003E51C1 /* SuggestionCell.swift */; };
+		390FF3FA26253ACC003B347B /* GoalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FF3F926253ACC003B347B /* GoalListViewController.swift */; };
+		390FF40526253BCF003B347B /* GoalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FF40426253BCF003B347B /* GoalList.swift */; };
+		390FF40826253C46003B347B /* GoalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FF40726253C46003B347B /* GoalListTableViewCell.swift */; };
 		3912C3F226147F6700A3C3AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912C3F126147F6700A3C3AA /* AppDelegate.swift */; };
 		3912C3F426147F6700A3C3AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912C3F326147F6700A3C3AA /* SceneDelegate.swift */; };
 		3912C3F626147F6700A3C3AA /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912C3F526147F6700A3C3AA /* DashboardViewController.swift */; };
@@ -53,6 +56,9 @@
 		0B5C859126243372006C66A7 /* Dashboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dashboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0B8921072621895E00333F37 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		390681C626201016003E51C1 /* SuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCell.swift; sourceTree = "<group>"; };
+		390FF3F926253ACC003B347B /* GoalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListViewController.swift; sourceTree = "<group>"; };
+		390FF40426253BCF003B347B /* GoalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalList.swift; sourceTree = "<group>"; };
+		390FF40726253C46003B347B /* GoalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListTableViewCell.swift; sourceTree = "<group>"; };
 		3912C3EE26147F6700A3C3AA /* equate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = equate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3912C3F126147F6700A3C3AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3912C3F326147F6700A3C3AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 		6F3F418626204D37009696F0 /* todayGoalCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = todayGoalCard.swift; path = equate/Dashboard/todayGoalCard.swift; sourceTree = SOURCE_ROOT; };
 		6F682BF1261C6B2500CAC906 /* percentageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = percentageCell.swift; sourceTree = "<group>"; };
 		6F682BF4261D72E200CAC906 /* Path 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Path 10.png"; path = "Assets.xcassets/Path 10.png"; sourceTree = "<group>"; };
+		6FEB889726258C5F0055D765 /* EquateCoredata 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "EquateCoredata 2.xcdatamodel"; sourceTree = "<group>"; };
 		C2AC7F042622BD2A0078CCA8 /* NewActivity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewActivity.storyboard; sourceTree = "<group>"; };
 		C2AC7F052622BD2A0078CCA8 /* NewActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
 		C2AC7F192622C24C0078CCA8 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -509,9 +516,10 @@
 		39816638261DAB2300C12290 /* EquateCoredata.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6FEB889726258C5F0055D765 /* EquateCoredata 2.xcdatamodel */,
 				39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */,
 			);
-			currentVersion = 39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */;
+			currentVersion = 6FEB889726258C5F0055D765 /* EquateCoredata 2.xcdatamodel */;
 			path = EquateCoredata.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
