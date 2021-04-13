@@ -76,6 +76,7 @@
 		6F3F418626204D37009696F0 /* todayGoalCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = todayGoalCard.swift; path = equate/Dashboard/todayGoalCard.swift; sourceTree = SOURCE_ROOT; };
 		6F682BF1261C6B2500CAC906 /* percentageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = percentageCell.swift; sourceTree = "<group>"; };
 		6F682BF4261D72E200CAC906 /* Path 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Path 10.png"; path = "Assets.xcassets/Path 10.png"; sourceTree = "<group>"; };
+		6FEB889726258C5F0055D765 /* EquateCoredata 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "EquateCoredata 2.xcdatamodel"; sourceTree = "<group>"; };
 		C2AC7F042622BD2A0078CCA8 /* NewActivity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewActivity.storyboard; sourceTree = "<group>"; };
 		C2AC7F052622BD2A0078CCA8 /* NewActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
 		C2AC7F192622C24C0078CCA8 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -523,9 +524,10 @@
 		39816638261DAB2300C12290 /* EquateCoredata.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6FEB889726258C5F0055D765 /* EquateCoredata 2.xcdatamodel */,
 				39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */,
 			);
-			currentVersion = 39816639261DAB2300C12290 /* EquateCoredata.xcdatamodel */;
+			currentVersion = 6FEB889726258C5F0055D765 /* EquateCoredata 2.xcdatamodel */;
 			path = EquateCoredata.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

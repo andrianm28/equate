@@ -23,18 +23,22 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var dash_percent = [80,50,30,75]
     var dash_color = ["#A5B7FE","#F9CDAD","#BAB0F2","#B6F6C1"]
     var color_dict = ["prod":"#A5B7FE", "leis":"#F9CDAD", "soci":"#BAB0F2", "rest":"#B6F6C1"]
+    var cat_array = ["prod","leis","soci","rest"]
     
     var selectedCell = 0
     
     var goal_list: [Goal] = []
+    var catGoal_list: [CategoryGoal] = []
     var createdGoal: [NewGoal] = []
     
     override func viewDidLoad() {
+        getTodayGoals()
+        calcCatPercent()
+        getCatGoalData()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
         configureButton()
-        getTodayGoals()
     }
 //    TRIGGER GOAL ARRAY APPEND
     func pass(goal: NewGoal){
@@ -115,17 +119,53 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-//    func addCatGoal(goal: Goal){
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//
-//        let managedObjectContext = appDelegate.persistentContainer.viewContext
-//
-//        let catGoalFetchRequest = NSFetchRequest<Goal>(entityName: "CategoryGoal")
-//
-//        var fetchPredicate = NSPredicate(format: "", <#T##args: CVarArg...##CVarArg#>)
-//
-//
-//    }
+    func calcCatPercent(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+
+        let catGoalFetchRequest = NSFetchRequest<CategoryGoal>(entityName: "CategoryGoal")
+        
+        do {
+            let catGoals = try managedObjectContext.fetch(catGoalFetchRequest)
+            
+            for catGoal in catGoals{
+                catGoal.target_in_minutes = 0
+                catGoal.progress_in_minutes = 0
+                for goal in goal_list{
+                    if (catGoal.category == goal.category){
+                        catGoal.setValue(catGoal.progress_in_minutes + Int64(goal.progress), forKey: "progress_in_minutes")
+                        catGoal.setValue(catGoal.target_in_minutes + Int64(goal.duration), forKey: "target_in_minutes")
+                    }
+                }
+            }
+            try managedObjectContext.save()
+        }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func getCatGoalData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        let goalFetchRequest = NSFetchRequest<CategoryGoal>(entityName: "CategoryGoal")
+        
+        do {
+            for cat in cat_array{
+                var fetchPredicate = NSPredicate(format: "category = %@", cat)
+                goalFetchRequest.predicate = fetchPredicate
+                let catGoal = try managedObjectContext.fetch(goalFetchRequest)
+                catGoal_list.append(contentsOf: catGoal)
+            }
+        }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    }
     
     func createGoal(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -145,6 +185,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let goal = NSManagedObject(entity: goalEntity, insertInto: managedObjectContext)
         goal.setValue("prod", forKey: "category")
         goal.setValue(Double(60.0), forKey: "duration")
+        goal.setValue(Double(45.0), forKey: "progress")
         goal.setValue("Grab coffee", forKey: "name")
         goal.setValue(repetition, forKey: "repeatEvery")
 
@@ -240,7 +281,14 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         trackLayer.frame = cell!.bounds
 
         let title = dash_title[indexPath.row]
-        let percentage = dash_percent[indexPath.row]
+        var percentage = 0
+        if (catGoal_list[indexPath.row].progress_in_minutes != 0){
+            print("masuk")
+            print(catGoal_list[indexPath.row].category)
+            print(catGoal_list[indexPath.row].progress_in_minutes)
+            print(catGoal_list[indexPath.row].target_in_minutes)
+            percentage = Int(catGoal_list[indexPath.row].progress_in_minutes*100) / Int(catGoal_list[indexPath.row].target_in_minutes)
+        }
         var center = shapeLayer.position
         center.y = center.y - 10
         
@@ -311,6 +359,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         
         cell.goalName.text = goal.name
         cell.layer.backgroundColor = hexStringToUIColor(hex: color_dict[goal.category]!).cgColor
+        cell.goalTime.text = "\(Int(goal.progress)) out of \(Int(goal.duration)) minutes"
         
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
