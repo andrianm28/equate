@@ -150,7 +150,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" scale="large" weight="bold"/>
                                         </state>
                                         <connections>
-                                            <segue destination="JQt-xs-m2V" kind="show" id="6CG-w9-ece"/>
+                                            <action selector="addGoalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mLl-7R-9Tn"/>
                                         </connections>
                                     </button>
                                 </subviews>

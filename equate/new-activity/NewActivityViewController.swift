@@ -9,7 +9,8 @@ import UIKit
 import Foundation
 import CoreData
 protocol isAbleToReceiveData {
-  func pass(data: String)  //data: string is an example parameter
+    func pass(data: String)  //data: string is an example parameter
+    func passIcon(icon: UIImage)
 }
 
 class NewActivityViewController: UIViewController, isAbleToReceiveData {
@@ -25,10 +26,10 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var timePicker: UIDatePicker!
     var newGoal = NewGoal(name: "")
+    var delegate: isAbleToUpdatGoal!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         for i in clickableView{
             i.layer.borderWidth = 1
             i.layer.borderColor = UIColor.lightGray.cgColor
@@ -38,9 +39,12 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     }
     
     func pass(data: String) { //conforms to protocol
-        newGoal.name = data
-//        acivityNameValue.text = data
-      // implement your own implementation
+        newGoal.category = data
+        activityCategoryValue.text = data
+    }
+    func passIcon(icon: UIImage) { //conforms to protocol
+        newGoal.icon = icon
+        activityIconValue.setImage(icon, for: .normal)
        }
     @IBAction func selectDayRepeat(_ sender: UIButton) {
         if repSwitch.isOn{repSwitch.isOn = !repSwitch.isOn}
@@ -55,6 +59,22 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         }
     }
     
+    @IBAction func selectCategory(_ sender: Any) {
+//        present(inputGoalController(), animated: true)
+//        let vc = storyboard?.instantiateViewController(identifier: "catNav") as! CategoryViewController
+        let catStbrd: UIStoryboard = UIStoryboard(name: "Category", bundle: nil)
+        let vc = catStbrd.instantiateViewController(identifier: "catView") as! CategoryViewController
+//      present new storyboard
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    @IBAction func selectIcon(_ sender: Any) {
+        let icStrbd: UIStoryboard = UIStoryboard(name: "Icon", bundle: nil)
+        let vc = icStrbd.instantiateViewController(identifier: "iconView") as! IconViewController
+//      present new storyboard
+        vc.delegate = self
+        present(vc, animated: true)
+    }
     func setRepeatValue(index: Int){
         switch index {
         case 0:
@@ -79,10 +99,13 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBAction func saveButtonClicked(_ sender: Any) {
 //        print(type(of:timePicker.date))
         let timeFormatter = DateFormatter()
-            timeFormatter.timeStyle = DateFormatter.Style.short
-
-        newGoal.time = timePicker.date
-        print(type(of:activityDurationValue.date))
+        timeFormatter.timeStyle = DateFormatter.Style.short
+        timeFormatter.timeZone = TimeZone(abbreviation: "GMT+7:00")
+//        TODO JAMNYA SALAH
+        let calendar = Calendar.current
+        let date = calendar.date(byAdding: .hour, value: 7, to: timePicker.date)
+        print(date!)
+        newGoal.time = date//timeFormatter.date(from: timeFormatter.string(from: timePicker.date))
         
         let components = Calendar.current.dateComponents([.hour, .minute], from: activityDurationValue.date)
         let hour = components.hour!
@@ -92,7 +115,8 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         
         newGoal.name = nameTextField.text
         print(newGoal)
-        
+        dismiss(animated: true, completion: nil)
+        delegate.pass(goal: newGoal)
     }
     
     
@@ -146,7 +170,7 @@ func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : 
 }
 
 
-struct NewGoal {
+public struct NewGoal {
     var name: String!
     var icon: UIImage!
     var category: String!

@@ -9,7 +9,7 @@ import UIKit
 
 class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-
+    var delegate: isAbleToReceiveData!
     @IBOutlet weak var categoryCollection: UICollectionView!
     
     
@@ -21,6 +21,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     @IBAction func cellTapped(_ sender: UIButton) {
         print(sender.currentTitle!)
+        dismiss(animated: true, completion: nil)
+        delegate.pass(data: sender.currentTitle!)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

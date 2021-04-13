@@ -19,22 +19,22 @@ class IconCollectionViewCell: UICollectionViewCell {
 }
 
 struct Icon {
-    let title: String
+    let index: String
     let image: UIImage
     
 }
 
 let icons: [Icon] = [
-    Icon(title: "Productivity", image: #imageLiteral(resourceName: "running")),
-    Icon(title: "", image: #imageLiteral(resourceName: "open-book")),
-    Icon(title: "", image: #imageLiteral(resourceName: "chef")),
-    Icon(title: "Leisure", image: #imageLiteral(resourceName: "cocktail")),
-    Icon(title: "", image: #imageLiteral(resourceName: "bowling-pins")),
-    Icon(title: "", image: #imageLiteral(resourceName: "leisure-2")),
-    Icon(title: "Social", image: #imageLiteral(resourceName: "businessmen")),
-    Icon(title: "", image: #imageLiteral(resourceName: "phone-call")),
-    Icon(title: "", image: #imageLiteral(resourceName: "breakfast-tray")),
-    Icon(title: "Rest & Sleep", image: #imageLiteral(resourceName: "moon")),
-    Icon(title: "", image: #imageLiteral(resourceName: "heart")),
-    Icon(title: "", image: #imageLiteral(resourceName: "rest"))
+    Icon(index: "0" , image: #imageLiteral(resourceName: "running")),
+    Icon(index: "1", image: #imageLiteral(resourceName: "open-book")),
+    Icon(index: "2", image: #imageLiteral(resourceName: "chef")),
+    Icon(index: "3", image: #imageLiteral(resourceName: "cocktail")),
+    Icon(index: "4", image: #imageLiteral(resourceName: "bowling-pins")),
+    Icon(index: "5", image: #imageLiteral(resourceName: "leisure-2")),
+    Icon(index: "6", image: #imageLiteral(resourceName: "businessmen")),
+    Icon(index: "7", image: #imageLiteral(resourceName: "phone-call")),
+    Icon(index: "8", image: #imageLiteral(resourceName: "breakfast-tray")),
+    Icon(index: "9", image: #imageLiteral(resourceName: "moon")),
+    Icon(index: "10", image: #imageLiteral(resourceName: "heart")),
+    Icon(index: "11", image: #imageLiteral(resourceName: "rest"))
 ]
