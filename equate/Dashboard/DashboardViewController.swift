@@ -7,8 +7,12 @@
 
 import UIKit
 import CoreData
+import Foundation
 
-class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate{
+protocol isAbleToUpdatGoal {
+    func pass(goal: NewGoal)
+}
+class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, isAbleToUpdatGoal{
     
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -23,6 +27,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var selectedCell = 0
     
     var goal_list: [Goal] = []
+    var createdGoal: [NewGoal] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +36,21 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         configureButton()
         getTodayGoals()
     }
+//    TRIGGER GOAL ARRAY APPEND
+    func pass(goal: NewGoal){
+        print("received")
+        print(goal.name!)
+        createdGoal.append(goal)
+//        TODO update viewnya ni @devin
+    }
+    @IBAction func addGoalTapped(_ sender: Any) {
+        let naStrbd: UIStoryboard = UIStoryboard(name: "NewActivity", bundle: nil)
+        let vc = naStrbd.instantiateViewController(identifier: "na") as! NewActivityViewController
+//      present new storyboard
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
     
     func deleteAllData(_ entity:String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

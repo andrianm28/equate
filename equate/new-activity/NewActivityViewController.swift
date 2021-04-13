@@ -26,10 +26,10 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var timePicker: UIDatePicker!
     var newGoal = NewGoal(name: "")
+    var delegate: isAbleToUpdatGoal!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         for i in clickableView{
             i.layer.borderWidth = 1
             i.layer.borderColor = UIColor.lightGray.cgColor
@@ -99,10 +99,10 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBAction func saveButtonClicked(_ sender: Any) {
 //        print(type(of:timePicker.date))
         let timeFormatter = DateFormatter()
-            timeFormatter.timeStyle = DateFormatter.Style.short
-
-        newGoal.time = timePicker.date
-        print(type(of:activityDurationValue.date))
+        timeFormatter.timeStyle = DateFormatter.Style.short
+        timeFormatter.timeZone = TimeZone(abbreviation: "GMT+7:00")
+//        TODO JAMNYA SALAH
+        newGoal.time = timeFormatter.date(from: timeFormatter.string(from: timePicker.date))
         
         let components = Calendar.current.dateComponents([.hour, .minute], from: activityDurationValue.date)
         let hour = components.hour!
@@ -112,7 +112,8 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         
         newGoal.name = nameTextField.text
         print(newGoal)
-        
+        dismiss(animated: true, completion: nil)
+        delegate.pass(goal: newGoal)
     }
     
     
@@ -166,7 +167,7 @@ func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : 
 }
 
 
-struct NewGoal {
+public struct NewGoal {
     var name: String!
     var icon: UIImage!
     var category: String!
