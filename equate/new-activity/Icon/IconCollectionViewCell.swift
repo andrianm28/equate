@@ -9,12 +9,12 @@ import UIKit
 
 class IconCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var IconLabel: UILabel!
+    
     @IBOutlet weak var IconImage: UIImageView!
     
     func setup(with icon: Icon) {
         IconImage.image = icon.image
-        IconLabel.text = icon.title
+        
     }
 }
 

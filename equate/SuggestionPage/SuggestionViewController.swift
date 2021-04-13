@@ -123,10 +123,10 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
             let selectedIndex = suggestionSummary.indexPath(for: sender as! UICollectionViewCell)
             let destVC = segue.destination as? NewActivityViewController
             
-            destVC?.newActivity.name = suggestionTitle[selectedIndex!.row]
-            destVC?.newActivity.category = catTitle
-            destVC?.newActivity.duration = suggestionDuration[selectedIndex!.row]
-            destVC?.newActivity.icon = suggestionIcon[selectedIndex!.row]
+            destVC?.newGoal.name = suggestionTitle[selectedIndex!.row]
+            destVC?.newGoal.category = catTitle
+            destVC?.newGoal.durationInMinutes = suggestionDuration[selectedIndex!.row]
+            destVC?.newGoal.icon = suggestionIcon[selectedIndex!.row]
         }
     }
     
