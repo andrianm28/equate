@@ -22,6 +22,12 @@ class IconViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return icons.count
     }
+    @IBAction func cellTapped(_ sender: UIButton) {
+        let icIndex = Int(sender.currentTitle!) ?? 0
+//        print(icons[icIndex].image)
+        dismiss(animated: true, completion: nil)
+        delegate.passIcon(icon: icons[icIndex].image)
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as! IconCollectionViewCell
@@ -32,8 +38,16 @@ class IconViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         cell.contentView.layer.masksToBounds = true
         cell.backgroundColor = UIColor.white
-        cell.setup(with: icons[indexPath.row])
         
+//        set button
+        let editButton = UIButton(frame: CGRect(x:0, y:20, width:184,height:247))
+        editButton.addTarget(self, action: #selector(cellTapped), for: UIControl.Event.touchUpInside)
+        editButton.setTitle(icons[indexPath.row].index, for: .normal)
+        editButton.setTitleColor(UIColor.clear, for: .normal)
+        
+        cell.setup(with: icons[indexPath.row])
+        cell.addSubview(editButton)
+
         return cell
         
     }

@@ -44,6 +44,7 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     }
     func passIcon(icon: UIImage) { //conforms to protocol
         newGoal.icon = icon
+        activityIconValue.setImage(icon, for: .normal)
        }
     @IBAction func selectDayRepeat(_ sender: UIButton) {
         if repSwitch.isOn{repSwitch.isOn = !repSwitch.isOn}
