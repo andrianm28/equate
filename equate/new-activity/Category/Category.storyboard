@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category-->
+        <!--CategoryViewController-->
         <scene sceneID="Wvc-gI-aRG">
             <objects>
-                <viewController id="D0y-C9-xOM" customClass="CategoryViewController" customModule="equate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="catView" title="CategoryViewController" id="D0y-C9-xOM" customClass="CategoryViewController" customModule="equate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KTH-Xo-OjM">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="2124.6153846153848" y="806.87203791469187"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--CategoryViewController-->
         <scene sceneID="rUI-TJ-zVs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MX8-Qg-Ib8" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="catNav" title="CategoryViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MX8-Qg-Ib8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EsL-W3-xok">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>

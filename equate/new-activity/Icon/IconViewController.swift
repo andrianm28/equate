@@ -8,6 +8,7 @@
 import UIKit
 
 class IconViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    var delegate: isAbleToReceiveData!
 
 
     @IBOutlet weak var collectionView: UICollectionView!

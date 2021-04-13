@@ -9,7 +9,8 @@ import UIKit
 import Foundation
 import CoreData
 protocol isAbleToReceiveData {
-  func pass(data: String)  //data: string is an example parameter
+    func pass(data: String)  //data: string is an example parameter
+    func passIcon(icon: UIImage)
 }
 
 class NewActivityViewController: UIViewController, isAbleToReceiveData {
@@ -38,9 +39,11 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     }
     
     func pass(data: String) { //conforms to protocol
-        newGoal.name = data
-//        acivityNameValue.text = data
-      // implement your own implementation
+        newGoal.category = data
+        activityCategoryValue.text = data
+    }
+    func passIcon(icon: UIImage) { //conforms to protocol
+        newGoal.icon = icon
        }
     @IBAction func selectDayRepeat(_ sender: UIButton) {
         if repSwitch.isOn{repSwitch.isOn = !repSwitch.isOn}
@@ -55,6 +58,22 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         }
     }
     
+    @IBAction func selectCategory(_ sender: Any) {
+//        present(inputGoalController(), animated: true)
+//        let vc = storyboard?.instantiateViewController(identifier: "catNav") as! CategoryViewController
+        let catStbrd: UIStoryboard = UIStoryboard(name: "Category", bundle: nil)
+        let vc = catStbrd.instantiateViewController(identifier: "catView") as! CategoryViewController
+//      present new storyboard
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    @IBAction func selectIcon(_ sender: Any) {
+        let icStrbd: UIStoryboard = UIStoryboard(name: "Icon", bundle: nil)
+        let vc = icStrbd.instantiateViewController(identifier: "iconView") as! IconViewController
+//      present new storyboard
+        vc.delegate = self
+        present(vc, animated: true)
+    }
     func setRepeatValue(index: Int){
         switch index {
         case 0:
