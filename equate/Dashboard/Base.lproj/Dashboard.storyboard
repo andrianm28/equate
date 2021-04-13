@@ -147,7 +147,7 @@
                                         <state key="normal" title="Add Goal">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" scale="large" weight="bold"/>
                                         </state>
                                         <connections>
                                             <segue destination="JQt-xs-m2V" kind="show" id="6CG-w9-ece"/>
