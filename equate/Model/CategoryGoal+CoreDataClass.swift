@@ -11,5 +11,5 @@ import CoreData
 
 @objc(CategoryGoal)
 public class CategoryGoal: NSManagedObject {
-
+    
 }

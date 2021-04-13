@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate{
     
@@ -17,14 +18,176 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var dash_title = ["Productivity","Leisure Time","Social","Rest and Sleep"]
     var dash_percent = [80,50,30,75]
     var dash_color = ["#A5B7FE","#F9CDAD","#BAB0F2","#B6F6C1"]
+    var color_dict = ["prod":"#A5B7FE", "leis":"#F9CDAD", "soci":"#BAB0F2", "rest":"#B6F6C1"]
     
     var selectedCell = 0
+    
+    var goal_list: [Goal] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
         configureButton()
+        getTodayGoals()
+    }
+    
+    func deleteAllData(_ entity:String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try managedObjectContext.fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                managedObjectContext.delete(objectData)
+            }
+        } catch let error {
+            print("Delete all data in \(entity) error :", error)
+        }
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+
+    func createCategoryGoal(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        let prodGoalEntity = NSEntityDescription.entity(forEntityName: "CategoryGoal", in: managedObjectContext)!
+        
+        let prodGoal = NSManagedObject(entity: prodGoalEntity, insertInto: managedObjectContext)
+        prodGoal.setValue("prod", forKey: "category")
+        prodGoal.setValue(0, forKey: "target_in_minutes")
+        prodGoal.setValue(0, forKey: "progress_in_minutes")
+        
+        let leisGoalEntity = NSEntityDescription.entity(forEntityName: "CategoryGoal", in: managedObjectContext)!
+        
+        let leisGoal = NSManagedObject(entity: leisGoalEntity, insertInto: managedObjectContext)
+        leisGoal.setValue("leis", forKey: "category")
+        leisGoal.setValue(0, forKey: "target_in_minutes")
+        leisGoal.setValue(0, forKey: "progress_in_minutes")
+        
+        let sociGoalEntity = NSEntityDescription.entity(forEntityName: "CategoryGoal", in: managedObjectContext)!
+        
+        let sociGoal = NSManagedObject(entity: sociGoalEntity, insertInto: managedObjectContext)
+        sociGoal.setValue("soci", forKey: "category")
+        sociGoal.setValue(0, forKey: "target_in_minutes")
+        sociGoal.setValue(0, forKey: "progress_in_minutes")
+        
+        let restGoalEntity = NSEntityDescription.entity(forEntityName: "CategoryGoal", in: managedObjectContext)!
+        
+        let restGoal = NSManagedObject(entity: restGoalEntity, insertInto: managedObjectContext)
+        restGoal.setValue("rest", forKey: "category")
+        restGoal.setValue(0, forKey: "target_in_minutes")
+        restGoal.setValue(0, forKey: "progress_in_minutes")
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+//    func addCatGoal(goal: Goal){
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//
+//        let managedObjectContext = appDelegate.persistentContainer.viewContext
+//
+//        let catGoalFetchRequest = NSFetchRequest<Goal>(entityName: "CategoryGoal")
+//
+//        var fetchPredicate = NSPredicate(format: "", <#T##args: CVarArg...##CVarArg#>)
+//
+//
+//    }
+    
+    func createGoal(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+
+        let repetitionEntity = NSEntityDescription.entity(forEntityName: "Repetition", in: managedObjectContext)!
+        let repetition = NSManagedObject(entity: repetitionEntity, insertInto: managedObjectContext)
+        repetition.setValue(true, forKey: "mon")
+        repetition.setValue(true, forKey: "tue")
+        repetition.setValue(true, forKey: "wed")
+        repetition.setValue(true, forKey: "thu")
+        repetition.setValue(true, forKey: "fri")
+        repetition.setValue(true, forKey: "sat")
+        repetition.setValue(true, forKey: "sun")
+
+        let goalEntity = NSEntityDescription.entity(forEntityName: "Goal", in: managedObjectContext)!
+        let goal = NSManagedObject(entity: goalEntity, insertInto: managedObjectContext)
+        goal.setValue("prod", forKey: "category")
+        goal.setValue(Double(60.0), forKey: "duration")
+        goal.setValue("Grab coffee", forKey: "name")
+        goal.setValue(repetition, forKey: "repeatEvery")
+
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func getTodayGoals(){
+        let today = getDay()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        let goalFetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        
+        var fetchPredicate = NSPredicate()
+        
+        if(today == "Monday"){
+            fetchPredicate = NSPredicate(format: "repeatEvery.mon = %@", NSNumber(value: true))
+        }
+        else if(today == "Tuesday"){
+            fetchPredicate = NSPredicate(format: "repeatEvery.tue = %@", NSNumber(value: true))
+        }
+        else if (today == "Wednesday"){
+            fetchPredicate = NSPredicate(format: "repeatEvery.wed = %@", NSNumber(value: true))
+        }
+        else if (today == "Thursday"){
+            fetchPredicate = NSPredicate(format: "repeatEvery.thu = %@", NSNumber(value: true))
+        }
+        else if (today == "Friday"){
+            fetchPredicate = NSPredicate(format: "repeatEvery.fri = %@", NSNumber(value: true))
+        }
+        else if (today == "Saturday"){
+            fetchPredicate = NSPredicate(format: "repeatEvery.sat = %@", NSNumber(value: true))
+        }
+        else if (today == "Sunday"){
+            fetchPredicate = NSPredicate(format: "repeatEvery.sun = %@", NSNumber(value: true))
+        }
+        
+        goalFetchRequest.predicate = fetchPredicate
+        
+        do {
+            let goals = try managedObjectContext.fetch(goalFetchRequest)
+            
+            goal_list = goals
+            print("Goals Count \(goals.count)")
+            
+        }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func getDay() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let dayInWeek = dateFormatter.string(from: date)
+        return dayInWeek
     }
     
     func configureButton(){
@@ -102,7 +265,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return goal_list.count
     }
     
     // Set the spacing between sections
@@ -123,6 +286,11 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todayCardIdentifier", for: indexPath) as! todayGoalCard
+        
+        let goal = goal_list[indexPath.row]
+        
+        cell.goalName.text = goal.name
+        cell.layer.backgroundColor = hexStringToUIColor(hex: color_dict[goal.category]!).cgColor
         
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true

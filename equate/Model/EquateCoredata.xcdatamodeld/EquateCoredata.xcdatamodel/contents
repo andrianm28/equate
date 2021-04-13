@@ -11,9 +11,9 @@
         <relationship name="hasGoals" optional="YES" toMany="YES" minCount="4" maxCount="4" deletionRule="Cascade" destinationEntity="CategoryGoal"/>
     </entity>
     <entity name="Goal" representedClassName="Goal" syncable="YES">
-        <attribute name="category" optional="YES" attributeType="String"/>
-        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="category" attributeType="String"/>
+        <attribute name="duration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
         <relationship name="repeatEvery" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Repetition"/>
     </entity>
     <entity name="Repetition" representedClassName="Repetition" syncable="YES">
@@ -26,9 +26,9 @@
         <attribute name="wed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-462.298583984375" positionY="-42.18716430664062" width="128" height="58"/>
-        <element name="Repetition" positionX="-232.15380859375" positionY="-44.7548828125" width="128" height="148"/>
-        <element name="Dashboard" positionX="-18.09808349609375" positionY="-471.9697875976562" width="128" height="88"/>
         <element name="CategoryGoal" positionX="-12.5738525390625" positionY="-329.2836303710938" width="128" height="88"/>
+        <element name="Dashboard" positionX="-18.09808349609375" positionY="-471.9697875976562" width="128" height="88"/>
+        <element name="Goal" positionX="-462.298583984375" positionY="-42.18716430664062" width="128" height="89"/>
+        <element name="Repetition" positionX="-232.15380859375" positionY="-44.7548828125" width="128" height="148"/>
     </elements>
 </model>
