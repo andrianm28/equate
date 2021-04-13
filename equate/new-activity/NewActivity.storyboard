@@ -258,26 +258,6 @@
             </objects>
             <point key="canvasLocation" x="493.84615384615381" y="108.76777251184834"/>
         </scene>
-        <!--Category-->
-        <scene sceneID="nIo-Bl-b5S">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Category" id="cey-Tm-gEm" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8vy-Ht-2zf"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2HH-Rw-dZ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="998" y="-48"/>
-        </scene>
-        <!--Icon-->
-        <scene sceneID="tec-lP-nK8">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Icon.storyboard" storyboardName="Icon" id="dcx-DF-7do" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="zdV-1T-gef"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nTV-n3-uO8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="975" y="8"/>
-        </scene>
     </scenes>
     <resources>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
