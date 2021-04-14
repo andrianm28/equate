@@ -439,9 +439,13 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
             }
+            self.viewWillAppear(true)
+
         }
         let editAction = UIAlertAction(title: "Edit Goal Details", style: .default) { (action:UIAlertAction!) in
             print("EDIT")
+            self.viewWillAppear(true)
+
         }
 
 
@@ -457,6 +461,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
             }
+            self.viewWillAppear(true)
+
         }
             
         // 3
@@ -495,6 +501,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+        viewWillAppear(true)
 
     }
     func hexStringToUIColor (hex:String) -> UIColor {
@@ -519,29 +526,4 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         )
     }
 
-}
-
-class ProgressView: UIViewController{
-    
-    @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        cancelButton.backgroundColor = .clear
-        cancelButton.layer.cornerRadius = 5
-        doneButton.layer.cornerRadius = 5
-
-        cancelButton.layer.borderWidth = 1
-        cancelButton.layer.borderColor = UIColor.black.cgColor
-    }
-    @IBAction func saveButt(_ sender: Any) {
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        let selectedRow = sender as? Int
-        print("==================")
-        print(selectedRow)
-    }
 }
