@@ -13,8 +13,9 @@ protocol isAbleToUpdatGoal {
     func pass(goal: NewGoal)
 }
 class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, isAbleToUpdatGoal{
-    @IBOutlet weak var popupTimePicker: UIView!
+    @IBOutlet weak var popupTimePicker: UIDatePicker!
     
+    @IBOutlet weak var greyOut: UIView!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var todayGoalView: UITableView!
@@ -31,6 +32,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var goal_list: [Goal] = []
     var catGoal_list: [CategoryGoal] = []
     var createdGoal: [NewGoal] = []
+    var tempGoal:Goal!
     
     override func viewDidLoad() {
 //        deleteAllData("Goal")
@@ -414,8 +416,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         // 2
         let editDurationAction = UIAlertAction(title: "Edit Duration Goal", style: .default) { (action:UIAlertAction!) in
             print("DURATION")
-            self.performSegue(withIdentifier: "progressPicker", sender: indexPath.section)
-
+            self.tempGoal = self.goal_list[indexPath.section]
+            self.greyOut.isHidden = false
         }
         let resetAction = UIAlertAction(title: "Reset Duration Goal", style: .default) { (action:UIAlertAction!) in
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
@@ -461,6 +463,30 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         self.present(optionMenu, animated: true, completion: nil)
     }
     
+    @IBAction func cancelPicker(_ sender: Any) {
+        greyOut.isHidden = true
+    }
+    
+    @IBAction func updateProgress(_ sender: Any) {
+        print("HERE")
+        let components = Calendar.current.dateComponents([.hour, .minute], from: popupTimePicker.date)
+        let hour = components.hour!
+        let minute = components.minute!
+        let totalDurationMinutes = (hour*60)+minute
+//        newGoal.durationInMinutes = totalDurationMinutes
+        tempGoal.progress = Double(totalDurationMinutes)
+        greyOut.isHidden = true
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+
+    }
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
