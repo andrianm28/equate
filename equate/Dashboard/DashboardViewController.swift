@@ -78,6 +78,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let naStrbd: UIStoryboard = UIStoryboard(name: "NewActivity", bundle: nil)
         let vc = naStrbd.instantiateViewController(identifier: "na") as! NewActivityViewController
 //      present new storyboard
+        print(self)
         vc.delegate = self
         present(vc, animated: true)
     }
@@ -223,7 +224,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    func structToGoal(structGoal: NewGoal){
+    public func structToGoal(structGoal: NewGoal){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedObjectContext = appDelegate.persistentContainer.viewContext
         let repetitionEntity = NSEntityDescription.entity(forEntityName: "Repetition", in: managedObjectContext)!
@@ -385,6 +386,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             destVC?.catTitle = dash_title[selectedIndex!.row]
             destVC?.catColor = dash_color[selectedIndex!.row]
             destVC?.catPercentage = dash_percent[selectedIndex!.row]
+            destVC?.reloadListener = self
         }
     }
     

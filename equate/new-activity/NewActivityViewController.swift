@@ -27,7 +27,8 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var timePicker: UIDatePicker!
     var newGoal = NewGoal(name: "")
     var delegate: isAbleToUpdatGoal!
-    
+    var isSuggestion = false
+    var reloadListener: listenToReloadCall!
     override func viewDidLoad() {
         super.viewDidLoad()
         for i in clickableView{
@@ -36,11 +37,13 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
             i.layer.cornerRadius = 10
         }
         setButton(butt: categoryButton!)
-//
-//        nameTextField.text = newGoal.name
-//        activityCategoryValue.text = newGoal.category
-//        activityIconValue.setImage(newGoal.icon, for: .normal)
-//        print(activityDurationValue.date)
+        if(newGoal.name != ""){
+            isSuggestion = true
+            nameTextField.text = newGoal.name
+            activityCategoryValue.text = newGoal.category
+//            activityIconValue.setImage(newGoal.icon, for: .normal)
+//            print(activityDurationValue.date)
+        }
     }
     
     func pass(data: String) { //conforms to protocol
@@ -120,8 +123,14 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         
         newGoal.name = nameTextField.text
         print(newGoal)
+        if(isSuggestion == false){
+            delegate.pass(goal: newGoal)
+        }
+        else{
+            structToGoal(structGoal: newGoal)
+        }
         dismiss(animated: true, completion: nil)
-        delegate.pass(goal: newGoal)
+        reloadListener.passReload(reloadRequested: true)
     }
     
     
@@ -166,7 +175,36 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         return appDelegate.persistentContainer.viewContext
     }
     
-    
+    func structToGoal(structGoal: NewGoal){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        let repetitionEntity = NSEntityDescription.entity(forEntityName: "Repetition", in: managedObjectContext)!
+        let repetition = NSManagedObject(entity: repetitionEntity, insertInto: managedObjectContext)
+//        todo repetition func
+        repetition.setValue(structGoal.mon, forKey: "mon")
+        repetition.setValue(structGoal.tue, forKey: "tue")
+        repetition.setValue(structGoal.wed, forKey: "wed")
+        repetition.setValue(structGoal.thu, forKey: "thu")
+        repetition.setValue(structGoal.fri, forKey: "fri")
+        repetition.setValue(structGoal.sat, forKey: "sat")
+        repetition.setValue(structGoal.sun, forKey: "sun")
+        
+        let goalEntity = NSEntityDescription.entity(forEntityName: "Goal", in: managedObjectContext)!
+        let goal = NSManagedObject(entity: goalEntity, insertInto: managedObjectContext)
+        goal.setValue(structGoal.category, forKey: "category")
+        goal.setValue(Double(structGoal.durationInMinutes), forKey: "duration")
+        goal.setValue(Double(0.0), forKey: "progress")
+        goal.setValue(structGoal.name, forKey: "name")
+        goal.setValue(repetition, forKey: "repeatEvery")
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        print("===================")
+        print(goal)
+    }
 
 }
 

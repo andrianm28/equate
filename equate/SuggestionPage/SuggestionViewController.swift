@@ -58,6 +58,9 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var testView: UIView!
     @IBOutlet weak var textSummaryCV: UIView!
     @IBOutlet weak var circleBar: UIView!
+    
+    var reloadListener: listenToReloadCall!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
@@ -174,6 +177,8 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
             destVC?.newGoal.category = catTitle
             destVC?.newGoal.durationInMinutes = selectedGoal.duration
             destVC?.newGoal.icon = selectedGoal.icon
+            destVC?.reloadListener = reloadListener
+//            reloadListener.passReload(reloadRequested: true)
         }
     }
     
