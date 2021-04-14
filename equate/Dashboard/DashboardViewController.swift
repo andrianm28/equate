@@ -45,6 +45,15 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         configureButton()
 //        popupTimePicker.isHidden = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getTodayGoals()
+        calcCatPercent()
+        getCatGoalData()
+        todayGoalView.reloadData()
+        summaryCollection.reloadData()
+    }
 //    TRIGGER GOAL ARRAY APPEND
     func pass(goal: NewGoal){
         print("received")
@@ -52,6 +61,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         createdGoal.append(goal)
 //        TODO update viewnya ni @devin
         structToGoal(structGoal: goal)
+        viewWillAppear(true)
     }
     @IBAction func addGoalTapped(_ sender: Any) {
         let naStrbd: UIStoryboard = UIStoryboard(name: "NewActivity", bundle: nil)
