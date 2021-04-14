@@ -107,10 +107,10 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         timeFormatter.timeStyle = DateFormatter.Style.short
         timeFormatter.timeZone = TimeZone(abbreviation: "GMT+7:00")
 //        TODO JAMNYA SALAH
-        let calendar = Calendar.current
-        let date = calendar.date(byAdding: .hour, value: 7, to: timePicker.date)
-        print(date!)
-        newGoal.time = date//timeFormatter.date(from: timeFormatter.string(from: timePicker.date))
+//        let calendar = Calendar.current
+//        let date = calendar.date(byAdding: .hour, value: 7, to: timePicker.date)
+//        print(date!)
+//        newGoal.time = date//timeFormatter.date(from: timeFormatter.string(from: timePicker.date))
         
         let components = Calendar.current.dateComponents([.hour, .minute], from: activityDurationValue.date)
         let hour = components.hour!

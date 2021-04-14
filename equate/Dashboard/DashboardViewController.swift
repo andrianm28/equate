@@ -12,7 +12,11 @@ import Foundation
 protocol isAbleToUpdatGoal {
     func pass(goal: NewGoal)
 }
-class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, isAbleToUpdatGoal{
+
+protocol listenToReloadCall {
+    func passReload(reloadRequested: Bool)
+}
+class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, isAbleToUpdatGoal, listenToReloadCall{
     @IBOutlet weak var popupTimePicker: UIDatePicker!
     
     @IBOutlet weak var greyOut: UIView!
@@ -53,13 +57,22 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         getCatGoalData()
         todayGoalView.reloadData()
         summaryCollection.reloadData()
+        print(goal_list.count)
+        
     }
+    func passReload(reloadRequested: Bool) {
+        viewWillAppear(true)
+    }
+    
 //    TRIGGER GOAL ARRAY APPEND
     func pass(goal: NewGoal){
+        print("received")
+        print(goal)
         createdGoal.append(goal)
 //        TODO update viewnya ni @devin
         structToGoal(structGoal: goal)
         viewWillAppear(true)
+        print("HERE")
     }
     @IBAction func addGoalTapped(_ sender: Any) {
         let naStrbd: UIStoryboard = UIStoryboard(name: "NewActivity", bundle: nil)
@@ -237,6 +250,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+        print("CLOSED")
+        viewWillAppear(true)
     }
     
     func getTodayGoals(){
@@ -428,6 +443,15 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
 
         }
         let editAction = UIAlertAction(title: "Edit Goal Details", style: .default) { (action:UIAlertAction!) in
+            
+            let naStrbd: UIStoryboard = UIStoryboard(name: "UpdateGoal", bundle: nil)
+            let vc = naStrbd.instantiateViewController(identifier: "updateGoal") as! UpdateGoalController
+    //      present new storyboard
+            vc.delegate = self
+            vc.delReload = self
+            vc.targetGoal = self.goal_list[indexPath.section]
+            self.present(vc, animated: true)
+            
             self.viewWillAppear(true)
 
         }
