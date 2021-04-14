@@ -41,6 +41,15 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
         configureButton()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getTodayGoals()
+        calcCatPercent()
+        getCatGoalData()
+        todayGoalView.reloadData()
+        summaryCollection.reloadData()
+    }
 //    TRIGGER GOAL ARRAY APPEND
     func pass(goal: NewGoal){
         print("received")
@@ -48,6 +57,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         createdGoal.append(goal)
 //        TODO update viewnya ni @devin
         structToGoal(structGoal: goal)
+        viewWillAppear(true)
     }
     @IBAction func addGoalTapped(_ sender: Any) {
         let naStrbd: UIStoryboard = UIStoryboard(name: "NewActivity", bundle: nil)
