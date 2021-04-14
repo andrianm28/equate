@@ -13,6 +13,7 @@ protocol isAbleToUpdatGoal {
     func pass(goal: NewGoal)
 }
 class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, isAbleToUpdatGoal{
+    @IBOutlet weak var popupTimePicker: UIView!
     
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -40,6 +41,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         // Do any additional setup after loading the view.
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
         configureButton()
+//        popupTimePicker.isHidden = true
     }
 //    TRIGGER GOAL ARRAY APPEND
     func pass(goal: NewGoal){
@@ -412,6 +414,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         // 2
         let editDurationAction = UIAlertAction(title: "Edit Duration Goal", style: .default) { (action:UIAlertAction!) in
             print("DURATION")
+            self.performSegue(withIdentifier: "progressPicker", sender: indexPath.section)
+
         }
         let resetAction = UIAlertAction(title: "Reset Duration Goal", style: .default) { (action:UIAlertAction!) in
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
@@ -481,3 +485,27 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
 
 }
 
+class ProgressView: UIViewController{
+    
+    @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        cancelButton.backgroundColor = .clear
+        cancelButton.layer.cornerRadius = 5
+        doneButton.layer.cornerRadius = 5
+
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = UIColor.black.cgColor
+    }
+    @IBAction func saveButt(_ sender: Any) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let selectedRow = sender as? Int
+        print("==================")
+        print(selectedRow)
+    }
+}
