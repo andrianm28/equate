@@ -56,8 +56,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     }
 //    TRIGGER GOAL ARRAY APPEND
     func pass(goal: NewGoal){
-        print("received")
-        print(goal.name!)
         createdGoal.append(goal)
 //        TODO update viewnya ni @devin
         structToGoal(structGoal: goal)
@@ -234,9 +232,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         goal.setValue(structGoal.name, forKey: "name")
         goal.setValue(repetition, forKey: "repeatEvery")
         
-        print("CALLED")
-        print(goal.value(forKey: "name"))
-        
         do {
             try managedObjectContext.save()
         } catch let error as NSError {
@@ -283,8 +278,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             let goals = try managedObjectContext.fetch(goalFetchRequest)
             
             goal_list = goals
-            print("Goals Count \(goals.count)")
-            
         }
         catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
@@ -331,10 +324,10 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let title = dash_title[indexPath.row]
         var percentage = 0
         if (catGoal_list[indexPath.row].progress_in_minutes != 0){
-            print("masuk")
-            print(catGoal_list[indexPath.row].category)
-            print(catGoal_list[indexPath.row].progress_in_minutes)
-            print(catGoal_list[indexPath.row].target_in_minutes)
+//            print("masuk")
+//            print(catGoal_list[indexPath.row].category)
+//            print(catGoal_list[indexPath.row].progress_in_minutes)
+//            print(catGoal_list[indexPath.row].target_in_minutes)
             percentage = Int(catGoal_list[indexPath.row].progress_in_minutes*100) / Int(catGoal_list[indexPath.row].target_in_minutes)
         }
         var center = shapeLayer.position
@@ -404,17 +397,10 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let cell = tableView.dequeueReusableCell(withIdentifier: "todayCardIdentifier", for: indexPath) as! todayGoalCard
         
         let goal = goal_list[indexPath.section]
-        print("MARK")
-        print(goal.name)
         
         cell.goalName.text = goal.name
         cell.layer.backgroundColor = hexStringToUIColor(hex: color_dict[goal.category]!).cgColor
         cell.goalTime.text = "\(Int(goal.progress)) out of \(Int(goal.duration)) minutes"
-//
-//        cell.goalName.text = goal_list[indexPath.row].name
-//        cell.layer.backgroundColor = hexStringToUIColor(hex: color_dict[goal_list[indexPath.row].category]!).cgColor
-//        cell.goalTime.text = "\(Int(goal_list[indexPath.row].progress)) out of \(Int(goal_list[indexPath.row].duration)) minutes"
-        
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         cell.selectedBackgroundView?.layer.cornerRadius = 10
@@ -424,12 +410,11 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let optionMenu = UIAlertController(title: nil, message: "Choose an option", preferredStyle: .actionSheet)
                 
         // 2
-        let editDurationAction = UIAlertAction(title: "Edit Duration Goal", style: .default) { (action:UIAlertAction!) in
-            print("DURATION")
+        let editDurationAction = UIAlertAction(title: "Update Goal Progress", style: .default) { (action:UIAlertAction!) in
             self.tempGoal = self.goal_list[indexPath.section]
             self.greyOut.isHidden = false
         }
-        let resetAction = UIAlertAction(title: "Reset Duration Goal", style: .default) { (action:UIAlertAction!) in
+        let resetAction = UIAlertAction(title: "Reset Goal Progress", style: .default) { (action:UIAlertAction!) in
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
             let managedObjectContext = appDelegate.persistentContainer.viewContext
             let goal = self.goal_list[indexPath.section]
@@ -443,7 +428,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
 
         }
         let editAction = UIAlertAction(title: "Edit Goal Details", style: .default) { (action:UIAlertAction!) in
-            print("EDIT")
             self.viewWillAppear(true)
 
         }
@@ -484,7 +468,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     @IBAction func updateProgress(_ sender: Any) {
-        print("HERE")
         let components = Calendar.current.dateComponents([.hour, .minute], from: popupTimePicker.date)
         let hour = components.hour!
         let minute = components.minute!
