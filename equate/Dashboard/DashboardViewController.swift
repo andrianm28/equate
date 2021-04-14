@@ -12,8 +12,14 @@ import Foundation
 protocol isAbleToUpdatGoal {
     func pass(goal: NewGoal)
 }
-class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, isAbleToUpdatGoal{
+
+protocol listenToReloadCall {
+    func passReload(reloadRequested: Bool)
+}
+class DashboardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, isAbleToUpdatGoal, listenToReloadCall{
+    @IBOutlet weak var popupTimePicker: UIDatePicker!
     
+    @IBOutlet weak var greyOut: UIView!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var todayGoalView: UITableView!
@@ -30,6 +36,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var goal_list: [Goal] = []
     var catGoal_list: [CategoryGoal] = []
     var createdGoal: [NewGoal] = []
+    var tempGoal:Goal!
     
     override func viewDidLoad() {
 //        deleteAllData("Goal")
@@ -40,6 +47,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         // Do any additional setup after loading the view.
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
         configureButton()
+//        popupTimePicker.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,15 +57,22 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         getCatGoalData()
         todayGoalView.reloadData()
         summaryCollection.reloadData()
+        print(goal_list.count)
+        
     }
+    func passReload(reloadRequested: Bool) {
+        viewWillAppear(true)
+    }
+    
 //    TRIGGER GOAL ARRAY APPEND
     func pass(goal: NewGoal){
         print("received")
-        print(goal.name!)
+        print(goal)
         createdGoal.append(goal)
 //        TODO update viewnya ni @devin
         structToGoal(structGoal: goal)
         viewWillAppear(true)
+        print("HERE")
     }
     @IBAction func addGoalTapped(_ sender: Any) {
         let naStrbd: UIStoryboard = UIStoryboard(name: "NewActivity", bundle: nil)
@@ -230,14 +245,13 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         goal.setValue(structGoal.name, forKey: "name")
         goal.setValue(repetition, forKey: "repeatEvery")
         
-        print("CALLED")
-        print(goal.value(forKey: "name"))
-        
         do {
             try managedObjectContext.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+        print("CLOSED")
+        viewWillAppear(true)
     }
     
     func getTodayGoals(){
@@ -279,8 +293,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             let goals = try managedObjectContext.fetch(goalFetchRequest)
             
             goal_list = goals
-            print("Goals Count \(goals.count)")
-            
         }
         catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
@@ -327,10 +339,10 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let title = dash_title[indexPath.row]
         var percentage = 0
         if (catGoal_list[indexPath.row].progress_in_minutes != 0){
-            print("masuk")
-            print(catGoal_list[indexPath.row].category)
-            print(catGoal_list[indexPath.row].progress_in_minutes)
-            print(catGoal_list[indexPath.row].target_in_minutes)
+//            print("masuk")
+//            print(catGoal_list[indexPath.row].category)
+//            print(catGoal_list[indexPath.row].progress_in_minutes)
+//            print(catGoal_list[indexPath.row].target_in_minutes)
             percentage = Int(catGoal_list[indexPath.row].progress_in_minutes*100) / Int(catGoal_list[indexPath.row].target_in_minutes)
         }
         var center = shapeLayer.position
@@ -400,23 +412,105 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let cell = tableView.dequeueReusableCell(withIdentifier: "todayCardIdentifier", for: indexPath) as! todayGoalCard
         
         let goal = goal_list[indexPath.section]
-        print("MARK")
-        print(goal.name)
         
         cell.goalName.text = goal.name
         cell.layer.backgroundColor = hexStringToUIColor(hex: color_dict[goal.category]!).cgColor
         cell.goalTime.text = "\(Int(goal.progress)) out of \(Int(goal.duration)) minutes"
-//
-//        cell.goalName.text = goal_list[indexPath.row].name
-//        cell.layer.backgroundColor = hexStringToUIColor(hex: color_dict[goal_list[indexPath.row].category]!).cgColor
-//        cell.goalTime.text = "\(Int(goal_list[indexPath.row].progress)) out of \(Int(goal_list[indexPath.row].duration)) minutes"
-        
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         cell.selectedBackgroundView?.layer.cornerRadius = 10
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let optionMenu = UIAlertController(title: nil, message: "Choose an option", preferredStyle: .actionSheet)
+                
+        // 2
+        let editDurationAction = UIAlertAction(title: "Update Goal Progress", style: .default) { (action:UIAlertAction!) in
+            self.tempGoal = self.goal_list[indexPath.section]
+            self.greyOut.isHidden = false
+        }
+        let resetAction = UIAlertAction(title: "Reset Goal Progress", style: .default) { (action:UIAlertAction!) in
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedObjectContext = appDelegate.persistentContainer.viewContext
+            let goal = self.goal_list[indexPath.section]
+            goal.progress = 0
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            self.viewWillAppear(true)
+
+        }
+        let editAction = UIAlertAction(title: "Edit Goal Details", style: .default) { (action:UIAlertAction!) in
+            
+            let naStrbd: UIStoryboard = UIStoryboard(name: "UpdateGoal", bundle: nil)
+            let vc = naStrbd.instantiateViewController(identifier: "updateGoal") as! UpdateGoalController
+    //      present new storyboard
+            vc.delegate = self
+            vc.delReload = self
+            vc.targetGoal = self.goal_list[indexPath.section]
+            self.present(vc, animated: true)
+            
+            self.viewWillAppear(true)
+
+        }
+
+
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction!) in
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedObjectContext = appDelegate.persistentContainer.viewContext
+            let goal = self.goal_list[indexPath.section]
+            
+            managedObjectContext.delete(goal)
+            
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            self.viewWillAppear(true)
+
+        }
+            
+        // 3
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            
+        // 4
+        optionMenu.addAction(editDurationAction)
+        optionMenu.addAction(resetAction)
+        optionMenu.addAction(editAction)
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(cancelAction)
+            
+        // 5
+        self.present(optionMenu, animated: true, completion: nil)
+    }
     
+    @IBAction func cancelPicker(_ sender: Any) {
+        greyOut.isHidden = true
+    }
+    
+    @IBAction func updateProgress(_ sender: Any) {
+        let components = Calendar.current.dateComponents([.hour, .minute], from: popupTimePicker.date)
+        let hour = components.hour!
+        let minute = components.minute!
+        let totalDurationMinutes = (hour*60)+minute
+//        newGoal.durationInMinutes = totalDurationMinutes
+        tempGoal.progress = Double(totalDurationMinutes)
+        greyOut.isHidden = true
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        viewWillAppear(true)
+
+    }
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
@@ -440,4 +534,3 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     }
 
 }
-

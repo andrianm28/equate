@@ -14,7 +14,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DashboardViewController" customModule="equate" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -188,6 +188,49 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vKB-zf-r4T">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsS-8V-coz">
+                                        <rect key="frame" x="62" y="456" width="129" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.30873820190000001" green="0.37575161460000001" blue="0.6039458513" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelPicker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cv8-1l-8R1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="407-eC-VeT">
+                                        <rect key="frame" x="198" y="456" width="129" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.30873820190000001" green="0.37575161460000001" blue="0.6039458513" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="updateProgress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wg2-0G-xPR"/>
+                                        </connections>
+                                    </button>
+                                    <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfb-89-aGt">
+                                        <rect key="frame" x="62" y="230" width="266" height="218"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szg-Tg-XDU">
+                                                <rect key="frame" x="0.0" y="0.0" width="266" height="218"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </datePicker>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.62089134367885968" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -196,6 +239,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addGoalButton" destination="082-Cm-LuR" id="i5l-5i-0Fh"/>
+                        <outlet property="greyOut" destination="vKB-zf-r4T" id="9QR-JK-rIt"/>
+                        <outlet property="popupTimePicker" destination="szg-Tg-XDU" id="iBb-M9-8Nx"/>
                         <outlet property="scrollView" destination="ris-Py-FCD" id="gPd-2k-ylJ"/>
                         <outlet property="summaryCollection" destination="N9L-K1-70R" id="TmH-Ko-WFJ"/>
                         <outlet property="todayGoalView" destination="412-hq-18t" id="jND-tt-5Pv"/>
@@ -224,6 +269,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMN-zc-Mfv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1545" y="313"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xal-pB-9bD">
+            <objects>
+                <viewController id="sEf-dB-NDQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="clC-0a-gjl">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Rog-yt-I9G"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xxT-ej-B4B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904.6153846153845" y="785.54502369668239"/>
         </scene>
         <!--Goals-->
         <scene sceneID="CKv-Oj-olg">
@@ -307,7 +367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35I-D0-dWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735.38461538461536" y="767.7725118483412"/>
+            <point key="canvasLocation" x="454" y="899"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="aTc-SA-RQ3">
@@ -322,7 +382,6 @@
                     <connections>
                         <outlet property="tabBar" destination="cfg-IB-MCe" id="niU-Tt-3uX"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Mjx-LF-0Y3"/>
-                        <segue destination="C8i-c7-o33" kind="relationship" relationship="viewControllers" id="cTa-It-UW8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BmU-Nd-42L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

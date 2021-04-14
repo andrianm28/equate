@@ -1,25 +1,21 @@
 //
-//  NewActivityViewController.swift
+//  UpdateGoalController.swift
 //  equate
 //
-//  Created by Alif Mahardhika on 08/04/21.
+//  Created by Alif Mahardhika on 14/04/21.
 //
 
 import UIKit
 import Foundation
 import CoreData
-protocol isAbleToReceiveData {
-    func pass(data: String)  //data: string is an example parameter
-    func passIcon(icon: UIImage)
-}
 
-class NewActivityViewController: UIViewController, isAbleToReceiveData {
-    
+
+class UpdateGoalController: UIViewController, isAbleToReceiveData {
+
     @IBOutlet weak var categoryButton: UIButton!
-    @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var repSwitch: UISwitch!
-    @IBOutlet var dayCollection: [UIButton]!
     @IBOutlet weak var activityCategoryValue: UILabel!
+    @IBOutlet var dayCollection: [UIButton]!
     @IBOutlet weak var activityIconValue: UIButton!
     @IBOutlet weak var activityDurationValue: UIDatePicker!
     @IBOutlet var clickableView: [UIView]!
@@ -27,6 +23,8 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     @IBOutlet weak var timePicker: UIDatePicker!
     var newGoal = NewGoal(name: "")
     var delegate: isAbleToUpdatGoal!
+    var delReload: listenToReloadCall!
+    var targetGoal: Goal!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +34,15 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
             i.layer.cornerRadius = 10
         }
         setButton(butt: categoryButton!)
-//
-//        nameTextField.text = newGoal.name
-//        activityCategoryValue.text = newGoal.category
-//        activityIconValue.setImage(newGoal.icon, for: .normal)
-//        print(activityDurationValue.date)
+        if(targetGoal != nil){
+            nameTextField.text = targetGoal.name
+            activityCategoryValue.text = targetGoal.category
+//            activityIconValue.setImage(targetGoal.icon, for: .normal)
+            goalToStruct()
+//            timePicker.date =
+            activityDurationValue.countDownDuration = TimeInterval(Int(newGoal.durationInMinutes))
+            setUpRepeatSelection()
+        }
     }
     
     func pass(data: String) { //conforms to protocol
@@ -119,9 +121,9 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         newGoal.durationInMinutes = totalDurationMinutes
         
         newGoal.name = nameTextField.text
-        print(newGoal)
+        saveStructToGoal()
         dismiss(animated: true, completion: nil)
-        delegate.pass(goal: newGoal)
+        delReload.passReload(reloadRequested: true)
     }
     
     
@@ -147,14 +149,6 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         nameTextField.textColor = UIColor.black
         
     }
-    
-    @IBAction func tapSetGoal(_ sender: Any) {
-////        present(inputGoalController(), animated: true)
-//        let vc = storyboard?.instantiateViewController(identifier: "inputGoal") as! inputGoalController
-////      present new storyboard
-//        vc.delegate = self
-//        present(vc, animated: true)
-    }
 //    dismiss storyboard
     @IBAction func backtoDash(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -166,28 +160,57 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
         return appDelegate.persistentContainer.viewContext
     }
     
+    func goalToStruct(){
+        newGoal.name = targetGoal.name
+        newGoal.durationInMinutes = Int(targetGoal.duration)
+        newGoal.category = targetGoal.category
+//        newGoal.time = ta
+        newGoal.sun = targetGoal.repeatEvery!.sun
+        newGoal.mon = targetGoal.repeatEvery!.mon
+        newGoal.tue = targetGoal.repeatEvery!.tue
+        newGoal.wed = targetGoal.repeatEvery!.wed
+        newGoal.thu = targetGoal.repeatEvery!.thu
+        newGoal.fri = targetGoal.repeatEvery!.tue
+        newGoal.sat = targetGoal.repeatEvery!.sat
+    }
+    
+    func saveStructToGoal(){
+        print("STRUCT:")
+        print(newGoal)
+        targetGoal.name = newGoal.name
+        targetGoal.duration = Double(newGoal.durationInMinutes)
+        targetGoal.category = newGoal.category
+        targetGoal.repeatEvery!.sun = newGoal.sun
+        targetGoal.repeatEvery!.mon = newGoal.mon
+        targetGoal.repeatEvery!.tue = newGoal.tue
+        targetGoal.repeatEvery!.wed = newGoal.wed
+        targetGoal.repeatEvery!.thu = newGoal.thu
+        targetGoal.repeatEvery!.fri = newGoal.fri
+        targetGoal.repeatEvery!.sat = newGoal.sat
+        
+        print("GOAL:")
+        print(targetGoal)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    func setUpRepeatSelection(){
+//        0 = sun, 6 = sat
+        dayCollection[0].isSelected = newGoal.sun
+        dayCollection[1].isSelected = newGoal.mon
+        dayCollection[2].isSelected = newGoal.tue
+        dayCollection[3].isSelected = newGoal.wed
+        dayCollection[4].isSelected = newGoal.thu
+        dayCollection[5].isSelected = newGoal.fri
+        dayCollection[6].isSelected = newGoal.sat
+        if(newGoal.sun && newGoal.mon && newGoal.tue && newGoal.wed && newGoal.thu && newGoal.fri && newGoal.sat){
+            repSwitch.isOn = true
+        }
+    }
     
 
 }
-
-func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : Int) {
-    return (minutes / 60, (minutes % 60))
-}
-
-
-public struct NewGoal {
-    var name: String!
-    var icon: UIImage!
-    var category: String!
-    var time: Date!
-    var durationInMinutes: Int!
-//    repetition
-    var mon: Bool = false
-    var tue: Bool = false
-    var wed: Bool = false
-    var thu: Bool = false
-    var fri: Bool = false
-    var sat: Bool = false
-    var sun: Bool = false
-}
-
