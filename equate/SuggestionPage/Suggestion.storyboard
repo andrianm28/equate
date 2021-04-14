@@ -183,6 +183,8 @@
                         <outlet property="infoLabel" destination="HOM-iU-Wbe" id="lOu-PW-Twu"/>
                         <outlet property="percentageLabel" destination="mRE-VV-VV2" id="4Tc-7d-NxH"/>
                         <outlet property="scrollView" destination="ovr-TE-QBl" id="ao7-Ld-vtm"/>
+                        <outlet property="suggestionDescLabel" destination="cGK-Mf-j0F" id="7lm-mR-Evw"/>
+                        <outlet property="suggestionGoalLabel" destination="Gao-95-cY5" id="fgh-cV-P8B"/>
                         <outlet property="suggestionSummary" destination="g33-5l-72D" id="cBB-aC-6ic"/>
                         <outlet property="testView" destination="wdc-Lo-LvZ" id="hW8-og-1Q8"/>
                         <outlet property="textSummaryCV" destination="30e-zo-mB5" id="bLX-gU-eog"/>
