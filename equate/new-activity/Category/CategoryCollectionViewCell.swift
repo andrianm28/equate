@@ -22,13 +22,14 @@ class CategoryCollectionViewCell: UICollectionViewCell {
 struct Category {
     let title  : String
     let Image : UIImage
+    let value: String
     
 }
 
 let categories: [Category] = [
-    Category(title: "Productivity", Image: #imageLiteral(resourceName: "productivity")),
-    Category(title: "Rest&Sleep", Image: #imageLiteral(resourceName: "restsleep")),
-    Category(title: "Social", Image: #imageLiteral(resourceName: "social")),
-    Category(title: "Leisure", Image: #imageLiteral(resourceName: "leisure"))
+    Category(title: "Productivity", Image: #imageLiteral(resourceName: "productivity"), value:"prod"),
+    Category(title: "Rest&Sleep", Image: #imageLiteral(resourceName: "restsleep"), value:"rest"),
+    Category(title: "Social", Image: #imageLiteral(resourceName: "social"), value:"soci"),
+    Category(title: "Leisure", Image: #imageLiteral(resourceName: "leisure"), value:"leis")
 ]
 

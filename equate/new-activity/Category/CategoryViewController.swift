@@ -41,7 +41,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let editButton = UIButton(frame: CGRect(x:0, y:20, width:184,height:247))
         editButton.addTarget(self, action: #selector(cellTapped), for: UIControl.Event.touchUpInside)
-        editButton.setTitle(categories[indexPath.row].title, for: .normal)
+        editButton.setTitle(categories[indexPath.row].value, for: .normal)
         editButton.setTitleColor(UIColor.clear, for: .normal)
 
         cell.setup(with: categories[indexPath.row])

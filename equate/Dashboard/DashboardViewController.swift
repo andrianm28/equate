@@ -32,6 +32,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var createdGoal: [NewGoal] = []
     
     override func viewDidLoad() {
+//        deleteAllData("Goal")
         getTodayGoals()
         calcCatPercent()
         getCatGoalData()
@@ -46,6 +47,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         print(goal.name!)
         createdGoal.append(goal)
 //        TODO update viewnya ni @devin
+        structToGoal(structGoal: goal)
     }
     @IBAction func addGoalTapped(_ sender: Any) {
         let naStrbd: UIStoryboard = UIStoryboard(name: "NewActivity", bundle: nil)
@@ -189,6 +191,38 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         goal.setValue("Grab coffee", forKey: "name")
         goal.setValue(repetition, forKey: "repeatEvery")
 
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func structToGoal(structGoal: NewGoal){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        let repetitionEntity = NSEntityDescription.entity(forEntityName: "Repetition", in: managedObjectContext)!
+        let repetition = NSManagedObject(entity: repetitionEntity, insertInto: managedObjectContext)
+//        todo repetition func
+        repetition.setValue(structGoal.mon, forKey: "mon")
+        repetition.setValue(structGoal.tue, forKey: "tue")
+        repetition.setValue(structGoal.wed, forKey: "wed")
+        repetition.setValue(structGoal.thu, forKey: "thu")
+        repetition.setValue(structGoal.fri, forKey: "fri")
+        repetition.setValue(structGoal.sat, forKey: "sat")
+        repetition.setValue(structGoal.sun, forKey: "sun")
+        
+        let goalEntity = NSEntityDescription.entity(forEntityName: "Goal", in: managedObjectContext)!
+        let goal = NSManagedObject(entity: goalEntity, insertInto: managedObjectContext)
+        goal.setValue(structGoal.category, forKey: "category")
+        goal.setValue(Double(structGoal.durationInMinutes), forKey: "duration")
+        goal.setValue(Double(0.0), forKey: "progress")
+        goal.setValue(structGoal.name, forKey: "name")
+        goal.setValue(repetition, forKey: "repeatEvery")
+        
+        print("CALLED")
+        print(goal.value(forKey: "name"))
+        
         do {
             try managedObjectContext.save()
         } catch let error as NSError {
@@ -355,11 +389,17 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todayCardIdentifier", for: indexPath) as! todayGoalCard
         
-        let goal = goal_list[indexPath.row]
+        let goal = goal_list[indexPath.section]
+        print("MARK")
+        print(goal.name)
         
         cell.goalName.text = goal.name
         cell.layer.backgroundColor = hexStringToUIColor(hex: color_dict[goal.category]!).cgColor
         cell.goalTime.text = "\(Int(goal.progress)) out of \(Int(goal.duration)) minutes"
+//
+//        cell.goalName.text = goal_list[indexPath.row].name
+//        cell.layer.backgroundColor = hexStringToUIColor(hex: color_dict[goal_list[indexPath.row].category]!).cgColor
+//        cell.goalTime.text = "\(Int(goal_list[indexPath.row].progress)) out of \(Int(goal_list[indexPath.row].duration)) minutes"
         
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
