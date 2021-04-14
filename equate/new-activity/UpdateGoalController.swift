@@ -1,22 +1,17 @@
 //
-//  NewActivityViewController.swift
+//  UpdateGoalController.swift
 //  equate
 //
-//  Created by Alif Mahardhika on 08/04/21.
+//  Created by Alif Mahardhika on 14/04/21.
 //
 
 import UIKit
 import Foundation
 import CoreData
-protocol isAbleToReceiveData {
-    func pass(data: String)  //data: string is an example parameter
-    func passIcon(icon: UIImage)
-}
 
-class NewActivityViewController: UIViewController, isAbleToReceiveData {
-    
+class UpdateGoalController: UIViewController, isAbleToReceiveData {
+
     @IBOutlet weak var categoryButton: UIButton!
-    @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var repSwitch: UISwitch!
     @IBOutlet var dayCollection: [UIButton]!
     @IBOutlet weak var activityCategoryValue: UILabel!
@@ -169,25 +164,3 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
     
 
 }
-
-func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : Int) {
-    return (minutes / 60, (minutes % 60))
-}
-
-
-public struct NewGoal {
-    var name: String!
-    var icon: UIImage!
-    var category: String!
-    var time: Date!
-    var durationInMinutes: Int!
-//    repetition
-    var mon: Bool = false
-    var tue: Bool = false
-    var wed: Bool = false
-    var thu: Bool = false
-    var fri: Bool = false
-    var sat: Bool = false
-    var sun: Bool = false
-}
-
