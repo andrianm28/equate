@@ -36,5 +36,9 @@ let icons: [Icon] = [
     Icon(index: "8", image: #imageLiteral(resourceName: "breakfast-tray")),
     Icon(index: "9", image: #imageLiteral(resourceName: "moon")),
     Icon(index: "10", image: #imageLiteral(resourceName: "heart")),
-    Icon(index: "11", image: #imageLiteral(resourceName: "rest"))
+    Icon(index: "11", image: #imageLiteral(resourceName: "rest")),
+    Icon(index: "12", image: #imageLiteral(resourceName: "flag")),
+    Icon(index: "13", image: #imageLiteral(resourceName: "goal")),
+    Icon(index: "14", image: #imageLiteral(resourceName: "mental-health")),
+    Icon(index: "15", image: #imageLiteral(resourceName: "hourglass"))
 ]
