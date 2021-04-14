@@ -39,6 +39,8 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         SuggestedGoal(name: "Meditation", category: "Rest and Sleep", icon: UIImage(named: "meditation-pose"), duration: 30)
     ]
     
+    var selectedGoal: SuggestedGoal = SuggestedGoal()
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var suggestionSummary: UICollectionView!
     
@@ -136,6 +138,7 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "suggestionCellIdentifier", for: indexPath) as? SuggestionCell
         
+        
         cell?.layer.cornerRadius = 10
         suggestionSummary.backgroundColor = UIColor.clear
         
@@ -155,18 +158,22 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
             cell?.suggestionDurationLabel.text = "\(minutesToHoursAndMinutes(suggestedCatlist[indexPath.row].duration).leftMinutes) minutes / day"
         }
         
+        selectedGoal = suggestedCatlist[indexPath.row]
+        
         return cell!
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSuggestNewGoal" {
-            let selectedIndex = suggestionSummary.indexPath(for: sender as! UICollectionViewCell)
+//            let selectedIndex = suggestionSummary.indexPath(for: sender as! UICollectionViewCell)
             let destVC = segue.destination as? NewActivityViewController
             
-//            destVC?.newGoal.name = suggestionTitle[selectedIndex!.row]
-//            destVC?.newGoal.category = catTitle
-//            destVC?.newGoal.durationInMinutes = suggestionDuration[selectedIndex!.row]
-//            destVC?.newGoal.icon = suggestionIcon[selectedIndex!.row]
+            // todo: and again bug in indexing selected item
+            
+            destVC?.newGoal.name = selectedGoal.name
+            destVC?.newGoal.category = catTitle
+            destVC?.newGoal.durationInMinutes = selectedGoal.duration
+            destVC?.newGoal.icon = selectedGoal.icon
         }
     }
     
@@ -193,7 +200,7 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         )
     }
     
-    func minutesToHoursAndMinutes (_ minutes : Int64) -> (hours : Int64 , leftMinutes : Int64) {
+    func minutesToHoursAndMinutes (_ minutes : Int) -> (hours : Int , leftMinutes : Int) {
         return (minutes / 60, (minutes % 60))
     }
     
@@ -201,7 +208,7 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         var name: String!
         var category: String!
         var icon: UIImage!
-        var duration: Int64!
+        var duration: Int!
     }
 
 }

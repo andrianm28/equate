@@ -36,6 +36,11 @@ class NewActivityViewController: UIViewController, isAbleToReceiveData {
             i.layer.cornerRadius = 10
         }
         setButton(butt: categoryButton!)
+        
+        nameTextField.text = newGoal.name
+        activityCategoryValue.text = newGoal.category
+        activityIconValue.setImage(newGoal.icon, for: .normal)
+        print(activityDurationValue.date)
     }
     
     func pass(data: String) { //conforms to protocol
