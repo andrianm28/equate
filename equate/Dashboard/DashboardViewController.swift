@@ -406,6 +406,48 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         cell.selectedBackgroundView?.layer.cornerRadius = 10
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let optionMenu = UIAlertController(title: nil, message: "Choose an option", preferredStyle: .actionSheet)
+                
+        // 2
+        let editDurationAction = UIAlertAction(title: "Edit Duration Goal", style: .default) { (action:UIAlertAction!) in
+            print("DURATION")
+        }
+        let resetAction = UIAlertAction(title: "Reset Duration Goal", style: .default) { (action:UIAlertAction!) in
+            print("DURATION")
+        }
+        let editAction = UIAlertAction(title: "Edit Goal Details", style: .default) { (action:UIAlertAction!) in
+            print("EDIT")
+        }
+
+
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction!) in
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedObjectContext = appDelegate.persistentContainer.viewContext
+            let goal = self.goal_list[indexPath.section]
+            
+            managedObjectContext.delete(goal)
+            
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+            
+        // 3
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            
+        // 4
+        optionMenu.addAction(editDurationAction)
+        optionMenu.addAction(resetAction)
+        optionMenu.addAction(editAction)
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(cancelAction)
+            
+        // 5
+        self.present(optionMenu, animated: true, completion: nil)
+    }
     
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
