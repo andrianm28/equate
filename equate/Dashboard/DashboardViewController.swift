@@ -414,7 +414,15 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             print("DURATION")
         }
         let resetAction = UIAlertAction(title: "Reset Duration Goal", style: .default) { (action:UIAlertAction!) in
-            print("DURATION")
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedObjectContext = appDelegate.persistentContainer.viewContext
+            let goal = self.goal_list[indexPath.section]
+            goal.progress = 0
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
         }
         let editAction = UIAlertAction(title: "Edit Goal Details", style: .default) { (action:UIAlertAction!) in
             print("EDIT")
