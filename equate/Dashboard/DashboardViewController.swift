@@ -387,7 +387,12 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             print("\(selectedCell) in suggestion")
             destVC?.catTitle = dash_title[selectedIndex!.row]
             destVC?.catColor = dash_color[selectedIndex!.row]
-            destVC?.catPercentage = dash_percent[selectedIndex!.row]
+            if (catGoal_list[selectedIndex!.row].target_in_minutes != 0){
+                destVC?.catPercentage = Int(catGoal_list[selectedIndex!.row].progress_in_minutes*100) / Int(catGoal_list[selectedIndex!.row].target_in_minutes)
+            }
+            else{
+                destVC?.catPercentage = 0
+            }
         }
     }
     
