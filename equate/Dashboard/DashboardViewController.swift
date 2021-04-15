@@ -80,6 +80,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
 //      present new storyboard
         print(self)
         vc.delegate = self
+        vc.reloadListener = self
         present(vc, animated: true)
     }
     
