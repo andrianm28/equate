@@ -39,7 +39,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var tempGoal:Goal!
     
     override func viewDidLoad() {
-//        deleteAllData("Goal")
+        deleteAllData("Goal")
         getTodayGoals()
         calcCatPercent()
         getCatGoalData()
@@ -346,6 +346,9 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
 //            print(catGoal_list[indexPath.row].progress_in_minutes)
 //            print(catGoal_list[indexPath.row].target_in_minutes)
             percentage = Int(catGoal_list[indexPath.row].progress_in_minutes*100) / Int(catGoal_list[indexPath.row].target_in_minutes)
+        }
+        if (catGoal_list[indexPath.row].target_in_minutes != 0){
+            cell?.cellInfo.text = "\(catGoal_list[indexPath.row].progress_in_minutes) out of \(catGoal_list[indexPath.row].target_in_minutes) minutes"
         }
         var center = shapeLayer.position
         center.y = center.y - 10
