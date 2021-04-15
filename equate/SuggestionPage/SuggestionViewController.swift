@@ -70,7 +70,9 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         let trackLayer = CAShapeLayer()
         
         titleLabel.text = catTitle
-        percentageLabel.text = "\(catPercentage)%"
+//        percentageLabel.text = "\(catPercentage)%"
+        percentageLabel.text = "0%"
+
         infoLabel.text = catInfo
         
         
@@ -114,7 +116,8 @@ class SuggestionViewController: UIViewController, UICollectionViewDelegate, UICo
         
         // track layer
         let circularPath = UIBezierPath(arcCenter: center, radius: 50, startAngle: -CGFloat.pi/2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        let progressPath = UIBezierPath(arcCenter: center, radius: 50, startAngle: -CGFloat.pi/2, endAngle: ((CGFloat(percentage)/100) - 0.25) * (2 * CGFloat.pi), clockwise: true)
+//        let progressPath = UIBezierPath(arcCenter: center, radius: 50, startAngle: -CGFloat.pi/2, endAngle: ((CGFloat(percentage)/100) - 0.25) * (2 * CGFloat.pi), clockwise: true)
+        let progressPath = UIBezierPath(arcCenter: center, radius: 50, startAngle: -CGFloat.pi/2, endAngle: ((CGFloat(0)/100) - 0.25) * (2 * CGFloat.pi), clockwise: true)
 
         
         trackLayer.path = circularPath.cgPath

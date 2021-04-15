@@ -28,8 +28,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var dash_title = ["Productivity","Leisure Time","Social","Rest and Sleep"]
     var dash_percent = [80,50,30,75]
     var dash_color = ["#A5B7FE","#F9CDAD","#BAB0F2","#B6F6C1"]
-    var color_dict = ["prod":"#A5B7FE", "leis":"#F9CDAD", "soci":"#BAB0F2", "rest":"#B6F6C1"]
-    var cat_array = ["prod","leis","soci","rest"]
+    var color_dict = ["Productivity":"#A5B7FE", "Leisure Time":"#F9CDAD", "Social":"#BAB0F2", "Rest and Sleep":"#B6F6C1"]
+    var cat_array = ["Productivity","Leisure Time","Social","Rest and Sleep"]
     
     var selectedCell = 0
     
@@ -39,7 +39,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var tempGoal:Goal!
     
     override func viewDidLoad() {
-//        deleteAllData("Goal")
+//        deleteAllData("CategoryGoal")
+//        createCategoryGoal()
         getTodayGoals()
         calcCatPercent()
         getCatGoalData()
@@ -116,28 +117,28 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         let prodGoalEntity = NSEntityDescription.entity(forEntityName: "CategoryGoal", in: managedObjectContext)!
         
         let prodGoal = NSManagedObject(entity: prodGoalEntity, insertInto: managedObjectContext)
-        prodGoal.setValue("prod", forKey: "category")
+        prodGoal.setValue("Productivity", forKey: "category")
         prodGoal.setValue(0, forKey: "target_in_minutes")
         prodGoal.setValue(0, forKey: "progress_in_minutes")
         
         let leisGoalEntity = NSEntityDescription.entity(forEntityName: "CategoryGoal", in: managedObjectContext)!
         
         let leisGoal = NSManagedObject(entity: leisGoalEntity, insertInto: managedObjectContext)
-        leisGoal.setValue("leis", forKey: "category")
+        leisGoal.setValue("Leisure Time", forKey: "category")
         leisGoal.setValue(0, forKey: "target_in_minutes")
         leisGoal.setValue(0, forKey: "progress_in_minutes")
         
         let sociGoalEntity = NSEntityDescription.entity(forEntityName: "CategoryGoal", in: managedObjectContext)!
         
         let sociGoal = NSManagedObject(entity: sociGoalEntity, insertInto: managedObjectContext)
-        sociGoal.setValue("soci", forKey: "category")
+        sociGoal.setValue("Social", forKey: "category")
         sociGoal.setValue(0, forKey: "target_in_minutes")
         sociGoal.setValue(0, forKey: "progress_in_minutes")
         
         let restGoalEntity = NSEntityDescription.entity(forEntityName: "CategoryGoal", in: managedObjectContext)!
         
         let restGoal = NSManagedObject(entity: restGoalEntity, insertInto: managedObjectContext)
-        restGoal.setValue("rest", forKey: "category")
+        restGoal.setValue("Rest and Sleep", forKey: "category")
         restGoal.setValue(0, forKey: "target_in_minutes")
         restGoal.setValue(0, forKey: "progress_in_minutes")
         
@@ -468,7 +469,25 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             let managedObjectContext = appDelegate.persistentContainer.viewContext
             let goal = self.goal_list[indexPath.section]
             
+            let catGoal = NSFetchRequest<CategoryGoal>(entityName: "CategoryGoal")
+            let fetchRequest = NSPredicate(format: "category = %@", goal.category)
+            catGoal.predicate = fetchRequest
+            
+            do {
+                let catGoalSet = try managedObjectContext.fetch(catGoal)
+                
+                for i in catGoalSet{
+                    i.setValue(i.target_in_minutes - Int64(goal.duration), forKey: "target_in_minutes")
+                    i.setValue(i.progress_in_minutes - Int64(goal.progress), forKey: "progress_in_minutes")
+                }
+            }
+            catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+            
+            
             managedObjectContext.delete(goal)
+            
             
             do {
                 try managedObjectContext.save()
@@ -476,6 +495,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
                 print("Could not save. \(error), \(error.userInfo)")
             }
             self.viewWillAppear(true)
+            self.summaryCollection.reloadData()
 
         }
             

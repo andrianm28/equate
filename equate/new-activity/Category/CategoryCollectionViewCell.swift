@@ -27,9 +27,9 @@ struct Category {
 }
 
 let categories: [Category] = [
-    Category(title: "Productivity", Image: #imageLiteral(resourceName: "productivity"), value:"prod"),
-    Category(title: "Rest&Sleep", Image: #imageLiteral(resourceName: "restsleep"), value:"rest"),
-    Category(title: "Social", Image: #imageLiteral(resourceName: "social"), value:"soci"),
-    Category(title: "Leisure", Image: #imageLiteral(resourceName: "leisure"), value:"leis")
+    Category(title: "Productivity", Image: #imageLiteral(resourceName: "productivity"), value:"Productivity"),
+    Category(title: "Rest and Sleep", Image: #imageLiteral(resourceName: "restsleep"), value:"Rest and Sleep"),
+    Category(title: "Social", Image: #imageLiteral(resourceName: "social"), value:"Social"),
+    Category(title: "Leisure", Image: #imageLiteral(resourceName: "leisure"), value:"Leisure Time")
 ]
 
