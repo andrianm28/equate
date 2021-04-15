@@ -39,7 +39,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     var tempGoal:Goal!
     
     override func viewDidLoad() {
-        deleteAllData("Goal")
+//        deleteAllData("Goal")
         getTodayGoals()
         calcCatPercent()
         getCatGoalData()
